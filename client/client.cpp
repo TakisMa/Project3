@@ -9,7 +9,6 @@
 #include <unistd.h>
 #include "../Functions.h"
 #include "client_utility.h"
-#include <string>
 #include <cstring>
 
 #define MAX_SIZE 10
@@ -46,9 +45,10 @@ int main(int argc, char *argv[]) {
     while(true) {
         printf("Connected successfully - Please enter string\n");
         if(strcmp(sbuff, "end") == 0) break;
+
         while (fgets(sbuff, MAX_SIZE, stdin) != NULL) {
             send(sock_desc, sbuff, strlen(sbuff), 0);
-/*
+            /*
             if (recv(sock_desc, rbuff, MAX_SIZE, 0) == 0)
                 printf("Error");
             else
@@ -57,6 +57,11 @@ int main(int argc, char *argv[]) {
             bzero(rbuff, MAX_SIZE);//to clean buffer-->IMP otherwise previous word characters also came
             printf("Received %s from server\n", rbuff);*/
         }
+        if (connect(sock_desc, (struct sockaddr *) &serv_addr, sizeof (serv_addr)) < 0) {
+            printf("Failed to connect to server\n");
+            return -1;
+        }
+
     }
 
     close(sock_desc);
