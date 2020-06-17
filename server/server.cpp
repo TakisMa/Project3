@@ -47,6 +47,7 @@ int main(int argc, char *argv[]) {
 
     FD_ZERO (&active_fd_set);
     FD_SET (sockQ, &active_fd_set);
+    int new_sockfd;
 
     while (true){
         /* Block until input arrives on one or more active sockets. */
@@ -64,17 +65,15 @@ int main(int argc, char *argv[]) {
                 // int new_sockfd;
                 cout << "inside for-loop fd: " << i << endl;
                 clientlen = sizeof(client);
-                cout << "before accept" << endl;
-                int new_sockfd = accept(sockQ, (struct sockaddr *) &client, &clientlen);
-                cout << "after accept" << endl;
+                if((new_sockfd = accept(sockQ, (struct sockaddr *) &client, &clientlen)) < 0) {
+                    cout << "new_sockfd: " << new_sockfd << endl;
+                }
                 if (new_sockfd < 0) {
                     perror("accept");
                     exit(EXIT_FAILURE);
                 }
                 fd->push(new_sockfd);
-                printf("Been here\n");
                 FD_SET(new_sockfd, &active_fd_set);
-                cout << "new_sock: "<< new_sockfd <<endl;
             }
         }
     }

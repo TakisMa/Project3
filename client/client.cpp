@@ -47,7 +47,6 @@ int main(int argc, char *argv[]) {
         printf("Connected successfully - Please enter string\n");
         if(strcmp(sbuff, "end") == 0) break;
         while (fgets(sbuff, MAX_SIZE, stdin) != NULL) {
-            printf("sbuff: %s\n", sbuff);
             send(sock_desc, sbuff, strlen(sbuff), 0);
 /*
             if (recv(sock_desc, rbuff, MAX_SIZE, 0) == 0)
