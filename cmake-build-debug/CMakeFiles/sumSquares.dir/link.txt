@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11 -pthread -g   CMakeFiles/sumSquares.dir/thread/sumSquares.cpp.o  -o sumSquares 

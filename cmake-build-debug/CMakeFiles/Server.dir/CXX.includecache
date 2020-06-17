@@ -1,0 +1,60 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/Functions.h
+string
+-
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/CircularBuffer.h
+thread
+-
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/server.cpp
+stdio.h
+-
+string
+-
+sys/socket.h
+-
+thread
+-
+stdlib.h
+-
+netinet/in.h
+-
+netdb.h
+-
+iostream
+-
+server_utility.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/server_utility.h
+CircularBuffer.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/CircularBuffer.h
+thread_functions.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/thread_functions.h
+../Functions.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/Functions.h
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/server_utility.h
+netinet/in.h
+-
+CircularBuffer.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/CircularBuffer.h
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/thread_functions.h
+pthread.h
+-
+sys/types.h
+-
+sys/socket.h
+-
+unistd.h
+-
+CircularBuffer.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/CircularBuffer.h
+
