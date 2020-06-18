@@ -299,6 +299,33 @@ client/testClient.cpp.s:
 	$(MAKE) -f CMakeFiles/test_Client.dir/build.make CMakeFiles/test_Client.dir/client/testClient.cpp.s
 .PHONY : client/testClient.cpp.s
 
+client/threads.o: client/threads.cpp.o
+
+.PHONY : client/threads.o
+
+# target to build an object file
+client/threads.cpp.o:
+	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client/threads.cpp.o
+.PHONY : client/threads.cpp.o
+
+client/threads.i: client/threads.cpp.i
+
+.PHONY : client/threads.i
+
+# target to preprocess a source file
+client/threads.cpp.i:
+	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client/threads.cpp.i
+.PHONY : client/threads.cpp.i
+
+client/threads.s: client/threads.cpp.s
+
+.PHONY : client/threads.s
+
+# target to generate assembly for a file
+client/threads.cpp.s:
+	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client/threads.cpp.s
+.PHONY : client/threads.cpp.s
+
 server/CircularBuffer.o: server/CircularBuffer.cpp.o
 
 .PHONY : server/CircularBuffer.o
@@ -514,6 +541,9 @@ help:
 	@echo "... client/testClient.o"
 	@echo "... client/testClient.i"
 	@echo "... client/testClient.s"
+	@echo "... client/threads.o"
+	@echo "... client/threads.i"
+	@echo "... client/threads.s"
 	@echo "... server/CircularBuffer.o"
 	@echo "... server/CircularBuffer.i"
 	@echo "... server/CircularBuffer.s"

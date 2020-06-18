@@ -17,7 +17,7 @@ bool check_int(char *num) { //checks if num is a number
     return true;
 }
 
-int checkClientArguments(int argc, char **argv, string &filepath, int &threadNum, int &servPort, hostent *servIP) {
+int checkClientArguments(int argc, char **argv, char *&filepath, int &threadNum, int &servPort, hostent *servIP) {
     bool arP = false;
     bool arH1 = false;
     bool arH2 = false;
@@ -31,7 +31,8 @@ int checkClientArguments(int argc, char **argv, string &filepath, int &threadNum
         for(int i = 1; i < argc; i += 2 ) {
             if((strcmp("-q", argv[i]) == 0) && !arP){
                 if(i + 1 < 9){
-                    filepath = string(argv[i+1]);
+                    filepath = new char[strlen(argv[i+1])];
+                    strcpy(filepath, (argv[i+1]));
                 }
                 else {
                     cout << "Wrong arguments!" << endl;

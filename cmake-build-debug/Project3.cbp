@@ -334,6 +334,12 @@
 		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/testClient.cpp">
 			<Option target="test_Client"/>
 		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/threads.cpp">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/threads.h">
+			<Option target="Client"/>
+		</Unit>
 		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/CircularBuffer.cpp">
 			<Option target="Server"/>
 		</Unit>

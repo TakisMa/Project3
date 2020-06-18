@@ -17,7 +17,8 @@ void *init_function(void *args) {
     CircularBuffer *buffer=((struct Arguments *) args)->buffer;
     while(true) {
         int fd = buffer->pop();
-        read(fd, buf, sizeof(buf));
+        int i=read(fd, buf, sizeof(buf));
+        cout << "Read from client: " << buf << endl;
         if(strcmp(buf, "end") == 0) break;
     }
 }

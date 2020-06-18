@@ -7,7 +7,12 @@ CMakeFiles/Client.dir/Functions.cpp.o: ../Functions.h
 CMakeFiles/Client.dir/client/client.cpp.o: ../Functions.h
 CMakeFiles/Client.dir/client/client.cpp.o: ../client/client.cpp
 CMakeFiles/Client.dir/client/client.cpp.o: ../client/client_utility.h
+CMakeFiles/Client.dir/client/client.cpp.o: ../client/threads.h
 
 CMakeFiles/Client.dir/client/client_utility.cpp.o: ../client/client_utility.cpp
 CMakeFiles/Client.dir/client/client_utility.cpp.o: ../client/client_utility.h
+
+CMakeFiles/Client.dir/client/threads.cpp.o: ../client/client_utility.h
+CMakeFiles/Client.dir/client/threads.cpp.o: ../client/threads.cpp
+CMakeFiles/Client.dir/client/threads.cpp.o: ../client/threads.h
 

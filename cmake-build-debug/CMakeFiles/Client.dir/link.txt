@@ -1,1 +1,1 @@
-/usr/bin/c++   -std=c++11 -pthread -g   CMakeFiles/Client.dir/client/client.cpp.o CMakeFiles/Client.dir/client/client_utility.cpp.o CMakeFiles/Client.dir/Functions.cpp.o  -o Client 
+/usr/bin/c++   -std=c++11 -pthread -g   CMakeFiles/Client.dir/client/client.cpp.o CMakeFiles/Client.dir/client/client_utility.cpp.o CMakeFiles/Client.dir/Functions.cpp.o CMakeFiles/Client.dir/client/threads.cpp.o  -o Client 

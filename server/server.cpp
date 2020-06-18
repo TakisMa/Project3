@@ -43,21 +43,14 @@ int main(int argc, char *argv[]) {
     args->addr = serverQ_ptr;
     args->len = sizeof(*serverQ_ptr);
     for(int i = 0; i < numThreads; i++) pthread_create(threads+i, NULL, init_function, (void*)args);
-    delete args;
+//    delete args;
 
-    FD_ZERO (&active_fd_set);
-    FD_SET (sockQ, &active_fd_set);
+    FD_ZERO(&active_fd_set);
+    FD_SET(sockQ, &active_fd_set);
     int new_sockfd;
     clientlen = sizeof(client);
-    if((new_sockfd = accept(sockQ, (struct sockaddr *) &client, &clientlen)) < 0) {
-        cout << "new_sockfd: " << new_sockfd << endl;
-    }
-    if (new_sockfd < 0) {
-        perror("accept");
-        exit(EXIT_FAILURE);
-    }
-    fd->push(new_sockfd);
-    FD_SET(new_sockfd, &active_fd_set);
+    int times = 0;
+
 
     while (true){
         /* Block until input arrives on one or more active sockets. */
@@ -72,7 +65,21 @@ int main(int argc, char *argv[]) {
         /* Service all the sockets with input pending. */
         for (int i = 0; i < FD_SETSIZE; i++) {
             if (FD_ISSET (i, &read_fd_set)) {
-                fd->push(i);
+              //  if(i == sockQ){
+                    if((new_sockfd = accept(sockQ, (struct sockaddr *) &client, &clientlen)) < 0) {
+                        perror("accept");
+                        exit(EXIT_FAILURE);
+                    }
+                    cout << "Main accepted connection" << endl;
+                    fd->push(new_sockfd);
+//                    close(new_sockfd);
+                 //   FD_SET(new_sockfd, &active_fd_set);
+//                }
+            /*    else {
+                    cout << "insert: " << i << endl;
+                    fd->push(i);
+                    FD_CLR(i, &active_fd_set);
+                }*/
             }
         }
     }

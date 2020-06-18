@@ -19,7 +19,7 @@ bool CircularBuffer::isEmpty() {
 
 int CircularBuffer::pop() {
     pthread_mutex_lock(&mtx);
-    if(count == 0) {
+    if(count <= 0) {
         cout << ">> Buffer Empty" << endl;
         pthread_cond_wait(&cond_nonempty, &mtx);
     }
