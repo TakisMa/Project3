@@ -57,11 +57,6 @@ int main(int argc, char *argv[]) {
             bzero(rbuff, MAX_SIZE);//to clean buffer-->IMP otherwise previous word characters also came
             printf("Received %s from server\n", rbuff);*/
         }
-        if (connect(sock_desc, (struct sockaddr *) &serv_addr, sizeof (serv_addr)) < 0) {
-            printf("Failed to connect to server\n");
-            return -1;
-        }
-
     }
 
     close(sock_desc);

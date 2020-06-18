@@ -17,10 +17,7 @@ void *init_function(void *args) {
     CircularBuffer *buffer=((struct Arguments *) args)->buffer;
     while(true) {
         int fd = buffer->pop();
-        cout << "before read() in thread" << endl;
         read(fd, buf, sizeof(buf));
-        cout << "after read() in thread buf is " << buf <<endl;
         if(strcmp(buf, "end") == 0) break;
-        cout << "Buf: " << buf << endl;
     }
 }

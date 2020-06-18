@@ -48,6 +48,16 @@ int main(int argc, char *argv[]) {
     FD_ZERO (&active_fd_set);
     FD_SET (sockQ, &active_fd_set);
     int new_sockfd;
+    clientlen = sizeof(client);
+    if((new_sockfd = accept(sockQ, (struct sockaddr *) &client, &clientlen)) < 0) {
+        cout << "new_sockfd: " << new_sockfd << endl;
+    }
+    if (new_sockfd < 0) {
+        perror("accept");
+        exit(EXIT_FAILURE);
+    }
+    fd->push(new_sockfd);
+    FD_SET(new_sockfd, &active_fd_set);
 
     while (true){
         /* Block until input arrives on one or more active sockets. */
@@ -60,20 +70,9 @@ int main(int argc, char *argv[]) {
             exit (EXIT_FAILURE);
         }
         /* Service all the sockets with input pending. */
-        for (int i = 0; i < FD_SETSIZE; ++i) {
+        for (int i = 0; i < FD_SETSIZE; i++) {
             if (FD_ISSET (i, &read_fd_set)) {
-                // int new_sockfd;
-                cout << "inside for-loop fd: " << i << endl;
-                clientlen = sizeof(client);
-                if((new_sockfd = accept(sockQ, (struct sockaddr *) &client, &clientlen)) < 0) {
-                    cout << "new_sockfd: " << new_sockfd << endl;
-                }
-                if (new_sockfd < 0) {
-                    perror("accept");
-                    exit(EXIT_FAILURE);
-                }
-                fd->push(new_sockfd);
-                FD_SET(new_sockfd, &active_fd_set);
+                fd->push(i);
             }
         }
     }
