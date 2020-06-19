@@ -5,6 +5,7 @@
 
 struct arguments {
     int servPort;
+    char *servIP;
 };
 
 #endif //PROJECT3_CLIENT_UTILITY_H

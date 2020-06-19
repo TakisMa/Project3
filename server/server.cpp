@@ -45,13 +45,12 @@ int main(int argc, char *argv[]) {
     args->addr = serverQ_ptr;
     args->len = sizeof(*serverQ_ptr);
     for(int i = 0; i < numThreads; i++) pthread_create(threads+i, NULL, init_function, (void*)args);
-//    delete args;
+
 
     FD_ZERO(&active_fd_set);
     FD_SET(sockQ, &active_fd_set);
     int new_sockfd;
     clientlen = sizeof(client);
-    int times = 0;
 
 
     while (true){

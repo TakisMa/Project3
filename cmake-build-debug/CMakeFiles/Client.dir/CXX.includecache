@@ -21,6 +21,12 @@ strings.h
 -
 cstring
 -
+sys/socket.h
+-
+netinet/in.h
+-
+arpa/inet.h
+-
 client_utility.h
 /home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/client_utility.h
 threads.h

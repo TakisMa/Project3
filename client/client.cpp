@@ -28,8 +28,7 @@ int t_num;
 
 int main(int argc, char *argv[]) {
     int numThreads, servPort;
-    hostent *servIP;
-    char *queryFile;
+    char *queryFile, *servIP;
 
     if(checkClientArguments(argc, argv, queryFile, numThreads, servPort, servIP) < 0) {
         perror("initialization");
@@ -45,6 +44,7 @@ int main(int argc, char *argv[]) {
     struct arguments *args = new struct arguments;
 
     args->servPort = servPort;
+    args->servIP = servIP;
 
     for(int i = 0; i < numThreads; i++) pthread_create(&t[i], NULL, t_function, (void*)args);
     for(int i = 0; i < numThreads; i++) pthread_join(t[i], NULL);

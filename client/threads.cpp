@@ -3,6 +3,9 @@
 #include <unistd.h>
 #include <strings.h>
 #include <cstring>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 #include "client_utility.h"
 #include "threads.h"
 using namespace std;
@@ -14,6 +17,8 @@ void *t_function(void *args) {
     int sock_desc;
     char sbuff[1024];
     int servPort = ((struct arguments *) args)->servPort;
+    char* servIP = new char[strlen(((struct arguments*) args)->servIP)];
+    strcpy(servIP, ((struct arguments*) args)->servIP);
     struct sockaddr_in serv_addr;
     pthread_mutex_lock(&count_mutex);
     t_count++;
@@ -29,7 +34,8 @@ void *t_function(void *args) {
     pthread_mutex_unlock(&print_mutex);*/
 
     serv_addr.sin_family = AF_INET;
-    serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+    serv_addr.sin_addr.s_addr = inet_addr(servIP);
+//    serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
     serv_addr.sin_port = htons(servPort);
 
 

@@ -17,7 +17,7 @@ bool check_int(char *num) { //checks if num is a number
     return true;
 }
 
-int checkClientArguments(int argc, char **argv, char *&filepath, int &threadNum, int &servPort, hostent *servIP) {
+int checkClientArguments(int argc, char **argv, char *&filepath, int &threadNum, int &servPort, char *&servIP) {
     bool arP = false;
     bool arH1 = false;
     bool arH2 = false;
@@ -73,7 +73,8 @@ int checkClientArguments(int argc, char **argv, char *&filepath, int &threadNum,
             }
             else if((strcmp("-sip", argv[i]) == 0) && !arB) {
                 if(i + 1 < 9){
-                    servIP = gethostbyname(argv[i+1]);
+                    servIP = new char(strlen(argv[i+1]));
+                    strcpy(servIP, argv[i+1]);
                     arB = true;
 
                     /*if(!check_int(argv[i+1])) {
