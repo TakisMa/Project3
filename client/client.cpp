@@ -19,6 +19,7 @@ using namespace std;
 
 pthread_mutex_t file_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t count_mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t print_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t t_ready = PTHREAD_COND_INITIALIZER;
 FILE *fp;
 int t_count;
@@ -48,7 +49,11 @@ int main(int argc, char *argv[]) {
     for(int i = 0; i < numThreads; i++) pthread_create(&t[i], NULL, t_function, (void*)args);
     for(int i = 0; i < numThreads; i++) pthread_join(t[i], NULL);
 
-
+    while(fp!=NULL) {
+        t_count = 0;
+        for(int i = 0; i < numThreads; i++) pthread_create(&t[i], NULL, t_function, (void*)args);
+        for(int i = 0; i < numThreads; i++) pthread_join(t[i], NULL);
+    }
 
 
     /*struct sockaddr_in serv_addr;

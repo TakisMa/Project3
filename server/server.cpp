@@ -12,6 +12,7 @@
 #include "../Functions.h"
 
 pthread_mutex_t mtx = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t print_mtx = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t cond_nonfull = PTHREAD_COND_INITIALIZER;
 pthread_cond_t cond_nonempty = PTHREAD_COND_INITIALIZER;
 
@@ -70,7 +71,9 @@ int main(int argc, char *argv[]) {
                         perror("accept");
                         exit(EXIT_FAILURE);
                     }
+                    /*pthread_mutex_lock(&print_mtx);
                     cout << "Main accepted connection" << endl;
+                    pthread_mutex_unlock(&print_mtx);*/
                     fd->push(new_sockfd);
 //                    close(new_sockfd);
                  //   FD_SET(new_sockfd, &active_fd_set);

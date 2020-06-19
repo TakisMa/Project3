@@ -6,43 +6,25 @@
 
 #IncludeRegexTransform: 
 
-/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/Functions.h
-string
--
-
-/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/client.cpp
-stdio.h
--
-string
--
-sys/socket.h
--
-thread
--
-stdlib.h
--
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/client_utility.h
 netinet/in.h
 -
-netdb.h
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/threads.cpp
+string
 -
-strings.h
+iostream
 -
 unistd.h
 -
-../Functions.h
-/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/Functions.h
-client_utility.h
-/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/client_utility.h
+strings.h
+-
 cstring
 -
 client_utility.h
 /home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/client_utility.h
 threads.h
 /home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/threads.h
-
-/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/client_utility.h
-netinet/in.h
--
 
 /home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/threads.h
 

@@ -24,7 +24,9 @@ void *t_function(void *args) {
 
     bzero((char *) &serv_addr, sizeof (serv_addr));
 
+    /*pthread_mutex_lock(&print_mutex);
     cout << "thread: " << pthread_self() << " has fd: " << sock_desc << endl;
+    pthread_mutex_unlock(&print_mutex);*/
 
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -32,12 +34,21 @@ void *t_function(void *args) {
 
 
     pthread_mutex_lock(&file_mutex);
-    if(getline(&line, &len, fp)){
-        cout << "threads line: " << line << endl;
+    if(fp != NULL) {
+        if (getline(&line, &len, fp) > 0) {
+            pthread_mutex_lock(&print_mutex);
+            cout << "thread: " << pthread_self() << " threads line: " << line << endl;
+            pthread_mutex_unlock(&print_mutex);
+        } else {
+            cerr << "getline" << endl;
+//        fclose(fp);
+            fp = NULL;
+        }
+        pthread_mutex_unlock(&file_mutex);
+        strcpy(sbuff, line);
     }
-    else cerr << "getline" <<endl;
-    pthread_mutex_unlock(&file_mutex);
-    strcpy(sbuff, line);
+    else pthread_mutex_unlock(&file_mutex);
+
 
 
     if(t_count == t_num) {
