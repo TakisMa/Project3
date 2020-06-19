@@ -6,14 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/CircularBuffer.cpp
-CircularBuffer.h
-/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/CircularBuffer.h
-iostream
--
-unistd.h
--
-
 /home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/CircularBuffer.h
 thread
 -

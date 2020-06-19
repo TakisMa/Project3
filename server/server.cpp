@@ -12,6 +12,7 @@
 #include "../Functions.h"
 
 pthread_mutex_t mtx = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t mtx1 = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t print_mtx = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t cond_nonfull = PTHREAD_COND_INITIALIZER;
 pthread_cond_t cond_nonempty = PTHREAD_COND_INITIALIZER;

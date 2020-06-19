@@ -23,11 +23,12 @@ void *init_function(void *args) {
         }
         int i=read(fd, buf, sizeof(buf));
         if(i > 0) {
+            if(strcmp(buf, "exit") == 0) break;
             pthread_mutex_lock(&print_mtx);
-            cout << "THREAD: " << pthread_self() << endl;
+            cout << "THREAD: " << pthread_self() << " with fd: " << fd << endl;
             cout << "Read from client: " << buf << endl;
             pthread_mutex_unlock(&print_mtx);
+            close(fd);
         }
-        else if(strcmp(buf, "end") == 0) break;
     }
 }

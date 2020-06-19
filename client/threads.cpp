@@ -40,7 +40,7 @@ void *t_function(void *args) {
             cout << "thread: " << pthread_self() << " threads line: " << line << endl;
             pthread_mutex_unlock(&print_mutex);
         } else {
-            cerr << "getline" << endl;
+            cerr << "EOF" << endl;
 //        fclose(fp);
             fp = NULL;
         }
@@ -59,10 +59,12 @@ void *t_function(void *args) {
     }
     pthread_mutex_unlock(&count_mutex);
 
-    if (connect(sock_desc, (struct sockaddr *) &serv_addr, sizeof (serv_addr)) < 0) {
-        perror("Failed to connect to server\n");
+    if(fp != NULL) {
+        if (connect(sock_desc, (struct sockaddr *) &serv_addr, sizeof (serv_addr)) < 0) {
+            perror("Failed to connect to server\n");
+        }
+        write(sock_desc, sbuff, sizeof(sbuff));
     }
-    write(sock_desc, sbuff, sizeof(sbuff));
     close(sock_desc);
-
+    return NULL;
 }
