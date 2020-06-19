@@ -18,10 +18,10 @@ void *init_function(void *args) {
         if(i > 0) {
             if(strcmp(buf, "exit") == 0) break;
             pthread_mutex_lock(&print_mtx);
-            cout << "THREAD: " << pthread_self() << " with fd: " << fd << endl;
             cout << "Read from client: " << buf << endl;
             pthread_mutex_unlock(&print_mtx);
             close(fd);
         }
     }
+    return NULL;
 }

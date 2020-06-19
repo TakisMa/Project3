@@ -188,36 +188,6 @@ test_Client/fast:
 	$(MAKE) -f CMakeFiles/test_Client.dir/build.make CMakeFiles/test_Client.dir/build
 .PHONY : test_Client/fast
 
-Functions.o: Functions.cpp.o
-
-.PHONY : Functions.o
-
-# target to build an object file
-Functions.cpp.o:
-	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Functions.cpp.o
-	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/Functions.cpp.o
-.PHONY : Functions.cpp.o
-
-Functions.i: Functions.cpp.i
-
-.PHONY : Functions.i
-
-# target to preprocess a source file
-Functions.cpp.i:
-	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Functions.cpp.i
-	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/Functions.cpp.i
-.PHONY : Functions.cpp.i
-
-Functions.s: Functions.cpp.s
-
-.PHONY : Functions.s
-
-# target to generate assembly for a file
-Functions.cpp.s:
-	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Functions.cpp.s
-	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/Functions.cpp.s
-.PHONY : Functions.cpp.s
-
 client/client.o: client/client.cpp.o
 
 .PHONY : client/client.o
@@ -325,6 +295,36 @@ client/threads.s: client/threads.cpp.s
 client/threads.cpp.s:
 	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client/threads.cpp.s
 .PHONY : client/threads.cpp.s
+
+common/Functions.o: common/Functions.cpp.o
+
+.PHONY : common/Functions.o
+
+# target to build an object file
+common/Functions.cpp.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/common/Functions.cpp.o
+	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/common/Functions.cpp.o
+.PHONY : common/Functions.cpp.o
+
+common/Functions.i: common/Functions.cpp.i
+
+.PHONY : common/Functions.i
+
+# target to preprocess a source file
+common/Functions.cpp.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/common/Functions.cpp.i
+	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/common/Functions.cpp.i
+.PHONY : common/Functions.cpp.i
+
+common/Functions.s: common/Functions.cpp.s
+
+.PHONY : common/Functions.s
+
+# target to generate assembly for a file
+common/Functions.cpp.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/common/Functions.cpp.s
+	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/common/Functions.cpp.s
+.PHONY : common/Functions.cpp.s
 
 server/CircularBuffer.o: server/CircularBuffer.cpp.o
 
@@ -529,9 +529,6 @@ help:
 	@echo "... Client"
 	@echo "... test_Server"
 	@echo "... test_Client"
-	@echo "... Functions.o"
-	@echo "... Functions.i"
-	@echo "... Functions.s"
 	@echo "... client/client.o"
 	@echo "... client/client.i"
 	@echo "... client/client.s"
@@ -544,6 +541,9 @@ help:
 	@echo "... client/threads.o"
 	@echo "... client/threads.i"
 	@echo "... client/threads.s"
+	@echo "... common/Functions.o"
+	@echo "... common/Functions.i"
+	@echo "... common/Functions.s"
 	@echo "... server/CircularBuffer.o"
 	@echo "... server/CircularBuffer.i"
 	@echo "... server/CircularBuffer.s"

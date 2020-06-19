@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Server.dir/Functions.cpp.o"
+  "CMakeFiles/Server.dir/common/Functions.cpp.o"
   "CMakeFiles/Server.dir/server/CircularBuffer.cpp.o"
   "CMakeFiles/Server.dir/server/server.cpp.o"
   "CMakeFiles/Server.dir/server/server_utility.cpp.o"

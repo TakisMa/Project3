@@ -1,15 +1,17 @@
 #include <stdio.h>
 #include <string>
 #include <sys/socket.h>
-#include <thread>
+#include <pthread.h>
 #include <stdlib.h>
 #include <netinet/in.h>
 #include <netdb.h>
 #include <iostream>
+#include <errno.h>
+#include <arpa/inet.h>
 #include "server_utility.h"
 #include "CircularBuffer.h"
 #include "thread_functions.h"
-#include "../Functions.h"
+#include "../common/Functions.h"
 
 pthread_mutex_t mtx = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t mtx1 = PTHREAD_MUTEX_INITIALIZER;
@@ -40,6 +42,15 @@ int main(int argc, char *argv[]) {
 
     socket_setup(&serverQ, &serverS, serverQ_ptr, serverS_ptr, sockQ, sockS, queryPort, statisticsPort);
 
+	char hostbuffer[256];
+    char *IPbuffer;
+    struct hostent *host_entry;
+    int hostname;
+    hostname = gethostname(hostbuffer, sizeof(hostbuffer));
+    host_entry = gethostbyname(hostbuffer);
+    IPbuffer = inet_ntoa(*((struct in_addr*)host_entry->h_addr_list[0]));
+    printf("Host IP: %s\n", IPbuffer);
+
     struct Arguments *args = new struct Arguments;
     args->buffer = fd;
     args->addr = serverQ_ptr;
@@ -51,7 +62,6 @@ int main(int argc, char *argv[]) {
     FD_SET(sockQ, &active_fd_set);
     int new_sockfd;
     clientlen = sizeof(client);
-
 
     while (true){
         /* Block until input arrives on one or more active sockets. */
@@ -66,23 +76,12 @@ int main(int argc, char *argv[]) {
         /* Service all the sockets with input pending. */
         for (int i = 0; i < FD_SETSIZE; i++) {
             if (FD_ISSET (i, &read_fd_set)) {
-              //  if(i == sockQ){
-                    if((new_sockfd = accept(sockQ, (struct sockaddr *) &client, &clientlen)) < 0) {
-                        perror("accept");
-                        exit(EXIT_FAILURE);
-                    }
-                    /*pthread_mutex_lock(&print_mtx);
-                    cout << "Main accepted connection" << endl;
-                    pthread_mutex_unlock(&print_mtx);*/
-                    fd->push(new_sockfd);
-//                    close(new_sockfd);
-                 //   FD_SET(new_sockfd, &active_fd_set);
-//                }
-            /*    else {
-                    cout << "insert: " << i << endl;
-                    fd->push(i);
-                    FD_CLR(i, &active_fd_set);
-                }*/
+                if((new_sockfd = accept(sockQ, (struct sockaddr *) &client, &clientlen)) < 0) {
+                    perror("accept");
+                    exit(EXIT_FAILURE);
+                }
+
+                fd->push(new_sockfd);
             }
         }
     }

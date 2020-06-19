@@ -83,18 +83,18 @@ CMakeFiles/Client.dir/client/client_utility.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/client/client_utility.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/client_utility.cpp" -o CMakeFiles/Client.dir/client/client_utility.cpp.s
 
-CMakeFiles/Client.dir/Functions.cpp.o: CMakeFiles/Client.dir/flags.make
-CMakeFiles/Client.dir/Functions.cpp.o: ../Functions.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Client.dir/Functions.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/Functions.cpp.o -c "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/Functions.cpp"
+CMakeFiles/Client.dir/common/Functions.cpp.o: CMakeFiles/Client.dir/flags.make
+CMakeFiles/Client.dir/common/Functions.cpp.o: ../common/Functions.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Client.dir/common/Functions.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/common/Functions.cpp.o -c "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/common/Functions.cpp"
 
-CMakeFiles/Client.dir/Functions.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/Functions.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/Functions.cpp" > CMakeFiles/Client.dir/Functions.cpp.i
+CMakeFiles/Client.dir/common/Functions.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/common/Functions.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/common/Functions.cpp" > CMakeFiles/Client.dir/common/Functions.cpp.i
 
-CMakeFiles/Client.dir/Functions.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/Functions.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/Functions.cpp" -o CMakeFiles/Client.dir/Functions.cpp.s
+CMakeFiles/Client.dir/common/Functions.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/common/Functions.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/common/Functions.cpp" -o CMakeFiles/Client.dir/common/Functions.cpp.s
 
 CMakeFiles/Client.dir/client/threads.cpp.o: CMakeFiles/Client.dir/flags.make
 CMakeFiles/Client.dir/client/threads.cpp.o: ../client/threads.cpp
@@ -113,7 +113,7 @@ CMakeFiles/Client.dir/client/threads.cpp.s: cmake_force
 Client_OBJECTS = \
 "CMakeFiles/Client.dir/client/client.cpp.o" \
 "CMakeFiles/Client.dir/client/client_utility.cpp.o" \
-"CMakeFiles/Client.dir/Functions.cpp.o" \
+"CMakeFiles/Client.dir/common/Functions.cpp.o" \
 "CMakeFiles/Client.dir/client/threads.cpp.o"
 
 # External object files for target Client
@@ -121,7 +121,7 @@ Client_EXTERNAL_OBJECTS =
 
 Client: CMakeFiles/Client.dir/client/client.cpp.o
 Client: CMakeFiles/Client.dir/client/client_utility.cpp.o
-Client: CMakeFiles/Client.dir/Functions.cpp.o
+Client: CMakeFiles/Client.dir/common/Functions.cpp.o
 Client: CMakeFiles/Client.dir/client/threads.cpp.o
 Client: CMakeFiles/Client.dir/build.make
 Client: CMakeFiles/Client.dir/link.txt

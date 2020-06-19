@@ -6,12 +6,12 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <stdio.h>
 #include "client_utility.h"
 #include "threads.h"
 using namespace std;
 
 void *t_function(void *args) {
-//    char *filepath = new char[sizeof((char*)args)];
     char * line = NULL;
     size_t len = 0;
     int sock_desc;
@@ -29,25 +29,16 @@ void *t_function(void *args) {
 
     bzero((char *) &serv_addr, sizeof (serv_addr));
 
-    /*pthread_mutex_lock(&print_mutex);
-    cout << "thread: " << pthread_self() << " has fd: " << sock_desc << endl;
-    pthread_mutex_unlock(&print_mutex);*/
-
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_addr.s_addr = inet_addr(servIP);
-//    serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+	//serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
     serv_addr.sin_port = htons(servPort);
 
 
     pthread_mutex_lock(&file_mutex);
     if(fp != NULL) {
-        if (getline(&line, &len, fp) > 0) {
-            pthread_mutex_lock(&print_mutex);
-            cout << "thread: " << pthread_self() << " threads line: " << line << endl;
-            pthread_mutex_unlock(&print_mutex);
-        } else {
+        if (getline(&line, &len, fp) <= 0) {
             cerr << "EOF" << endl;
-//        fclose(fp);
             fp = NULL;
         }
         pthread_mutex_unlock(&file_mutex);
@@ -57,6 +48,8 @@ void *t_function(void *args) {
 
 
 
+    /* καθε thread φτανει σε αυτο το σημειο και περιμενει. Μολις φτασει το το τελευταιο
+     * (αρα count = total_threads) κανει broadcast ξεκινώντας όλα τα sleeping threads */
     if(t_count == t_num) {
         pthread_cond_broadcast(&t_ready);
     }
@@ -65,11 +58,18 @@ void *t_function(void *args) {
     }
     pthread_mutex_unlock(&count_mutex);
 
-    if(fp != NULL) {
+
+
+    /* στελνει μηνυμα οσο υπαρχει ακομα κατι στο αρχειο για να διαβαστει ή αν το current thread εχει
+     * διαβασει μια γραμμη που δεν εχει στειλει (και δεν ειναι κενη) */
+    if(fp != NULL || line != NULL && strlen(line) != 0) {
         if (connect(sock_desc, (struct sockaddr *) &serv_addr, sizeof (serv_addr)) < 0) {
             perror("Failed to connect to server\n");
         }
         write(sock_desc, sbuff, sizeof(sbuff));
+        pthread_mutex_lock(&print_mutex);
+        cout << "fd: " << sock_desc << " threads line sent: " << sbuff << endl;
+        pthread_mutex_unlock(&print_mutex);
     }
     close(sock_desc);
     return NULL;

@@ -19,10 +19,7 @@ bool CircularBuffer::isEmpty() {
 
 int CircularBuffer::pop() {
     pthread_mutex_lock(&mtx);
-    if(count == 0) {
-//        cout << ">> Buffer Empty" << endl;
-        pthread_cond_wait(&cond_nonempty, &mtx);
-    }
+    if(count == 0) pthread_cond_wait(&cond_nonempty, &mtx);
     int tmp = buffer[head];
     buffer[head] = -1;
     head = (head + 1) % capacity;
@@ -34,10 +31,7 @@ int CircularBuffer::pop() {
 
 int CircularBuffer::push(int desc) {
     pthread_mutex_lock(&mtx);
-    if(count == capacity) {
-        cout << ">> Full Buffer" << endl;
-        pthread_cond_wait(&cond_nonfull, &mtx);
-    }
+    if(count == capacity) pthread_cond_wait(&cond_nonfull, &mtx);
     count ++;
     buffer[tail] = desc;
     tail = (tail + 1) % capacity;

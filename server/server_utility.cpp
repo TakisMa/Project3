@@ -1,6 +1,7 @@
 #include "server_utility.h"
 #include <cstdlib>
 #include <iostream>
+#include <stdio.h>
 
 void perror_exit(char *message) {
     perror(message);
@@ -29,7 +30,7 @@ int socket_setup(struct sockaddr_in *serverQ, struct sockaddr_in *serverS, struc
     if (bind(sockS, serverS_ptr, sizeof(*serverS)) < 0)
         perror_exit("Statistics bind");
 /* Listen for connections */
-    if (listen(sockQ, 1) < 0) perror_exit("Query listen");
+    if (listen(sockQ, 5) < 0) perror_exit("Query listen");
     if (listen(sockS, 5) < 0) perror_exit("Statistics listen");
 
 }

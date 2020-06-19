@@ -1,1 +1,1 @@
-/usr/bin/c++   -std=c++11 -pthread -g   CMakeFiles/Server.dir/server/server.cpp.o CMakeFiles/Server.dir/server/server_utility.cpp.o CMakeFiles/Server.dir/Functions.cpp.o CMakeFiles/Server.dir/server/CircularBuffer.cpp.o CMakeFiles/Server.dir/server/thread_functions.cpp.o  -o Server 
+/usr/bin/c++   -std=c++11 -pthread -g   CMakeFiles/Server.dir/server/server.cpp.o CMakeFiles/Server.dir/server/server_utility.cpp.o CMakeFiles/Server.dir/common/Functions.cpp.o CMakeFiles/Server.dir/server/CircularBuffer.cpp.o CMakeFiles/Server.dir/server/thread_functions.cpp.o  -o Server 

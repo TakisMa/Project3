@@ -1,6 +1,6 @@
 #ifndef PROJECT3_CIRCULARBUFFER_H
 #define PROJECT3_CIRCULARBUFFER_H
-#include <thread>
+#include <pthread.h>
 
 
 class CircularBuffer {
@@ -10,8 +10,8 @@ private:
     int count;
     int head;
     int tail;
-
 public:
+
     bool isFull();
 
     bool isEmpty();

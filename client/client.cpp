@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <string>
 #include <sys/socket.h>
-#include <thread>
+#include <pthread.h>
 #include <stdlib.h>
 #include <netinet/in.h>
 #include <netdb.h>
 #include <strings.h>
 #include <unistd.h>
-#include "../Functions.h"
+#include "../common/Functions.h"
 #include "client_utility.h"
 #include <cstring>
 #include "client_utility.h"

@@ -24,7 +24,7 @@ int checkClientArguments(int argc, char **argv, char *&filepath, int &threadNum,
     bool arB = false;
 
     if(argc != 9) {
-        cout << "Wrong arguments!" << endl;
+        cout << "Few arguments!" << endl;
         return -1;
     }
     else {
@@ -35,7 +35,7 @@ int checkClientArguments(int argc, char **argv, char *&filepath, int &threadNum,
                     strcpy(filepath, (argv[i+1]));
                 }
                 else {
-                    cout << "Wrong arguments!" << endl;
+                    cout << "Wrong arguments(q)!" << endl;
                     return -1;
                 }
             }
@@ -51,7 +51,7 @@ int checkClientArguments(int argc, char **argv, char *&filepath, int &threadNum,
                     }
                 }
                 else {
-                    cout << "Wrong arguments!" << endl;
+                    cout << "Wrong arguments(sp)!" << endl;
                     return -1;
                 }
             }
@@ -67,7 +67,7 @@ int checkClientArguments(int argc, char **argv, char *&filepath, int &threadNum,
                     }
                 }
                 else {
-                    cout << "Wrong arguments!" << endl;
+                    cout << "Wrong arguments(w)!" << endl;
                     return -1;
                 }
             }
@@ -86,7 +86,7 @@ int checkClientArguments(int argc, char **argv, char *&filepath, int &threadNum,
                     }*/
                 }
                 else {
-                    cout << "Wrong arguments!" << endl;
+                    cout << "Wrong arguments(sip)!" << endl;
                     return -1;
                 }
             }
@@ -110,12 +110,12 @@ int checkServerArguments(int argc, char **argv, int &query, int &stat, int &thre
     bool arB = false;
 
     if(argc != 9) {
-        cout << "Wrong arguments!" << endl;
+        cout << "Wrong number of arguments!" << endl;
         return -1;
     }
     else {
         for(int i = 1; i < argc; i += 2 ) {
-            if((strcmp("-q", argv[i]) == 0) && !arP){
+            if((strcmp("-q", argv[i]) == 0) && !arH1){
                 if(i + 1 < 9){
                     if(!check_int(argv[i+1])) {
                         cout << "Argument after -h1 is not an INT!" << endl;
@@ -127,11 +127,11 @@ int checkServerArguments(int argc, char **argv, int &query, int &stat, int &thre
                     }
                 }
                 else {
-                    cout << "Wrong arguments!" << endl;
+                    cout << "Wrong arguments(q)!" << endl;
                     return -1;
                 }
             }
-            else if((strcmp("-s", argv[i]) == 0) && !arH1){
+            else if((strcmp("-s", argv[i]) == 0) && !arH2){
                 if(i + 1 < 9){
                     if(!check_int(argv[i+1])) {
                         cout << "Argument after -h1 is not an INT!" << endl;
@@ -139,15 +139,15 @@ int checkServerArguments(int argc, char **argv, int &query, int &stat, int &thre
                     }
                     else {
                         stat = atoi(argv[i+1]);
-                        arH1 = true;
+                        arH2 = true;
                     }
                 }
                 else {
-                    cout << "Wrong arguments!" << endl;
+                    cout << "Wrong arguments(s)!" << endl;
                     return -1;
                 }
             }
-            else if((strcmp("-w", argv[i]) == 0) && !arH2) {
+            else if((strcmp("-w", argv[i]) == 0) && !arP) {
                 if(i + 1 < 9){
                     if(!check_int(argv[i+1])) {
                         cout << "Argument after -h2 is not an INT!" << endl;
@@ -155,11 +155,11 @@ int checkServerArguments(int argc, char **argv, int &query, int &stat, int &thre
                     }
                     else {
                         threadNum = atoi(argv[i+1]);
-                        arH2 = true;
+                        arP = true;
                     }
                 }
                 else {
-                    cout << "Wrong arguments!" << endl;
+                    cout << "Wrong arguments(w)!" << endl;
                     return -1;
                 }
             }
@@ -175,17 +175,21 @@ int checkServerArguments(int argc, char **argv, int &query, int &stat, int &thre
                     }
                 }
                 else {
-                    cout << "Wrong arguments!" << endl;
+                    cout << "Wrong arguments(b)!" << endl;
                     return -1;
                 }
             }
         }
         if(!arB || !arH1 || !arH2 || !arB) {
-            cout << "Wrong arguments!" << endl;
+            cout << "Wrong arguments. Not all arguments were initialized!" << endl;
             return -1;
         }
         else if(query == 0 || stat == 0 || threadNum == 0 || bufferSize == 0){
             cout << "Wrong initialization parameters " << endl;
+			cout << "query = " << query << endl;
+			cout << "stat = " << stat << endl;
+			cout << "threadNum = " << threadNum << endl;
+			cout << "bufferSize = " << bufferSize << endl; 
             return -2;
         }
     }

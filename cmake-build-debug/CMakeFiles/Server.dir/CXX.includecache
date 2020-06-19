@@ -6,12 +6,12 @@
 
 #IncludeRegexTransform: 
 
-/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/Functions.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/common/Functions.h
 string
 -
 
 /home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/CircularBuffer.h
-thread
+pthread.h
 -
 
 /home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/server.cpp
@@ -21,7 +21,7 @@ string
 -
 sys/socket.h
 -
-thread
+pthread.h
 -
 stdlib.h
 -
@@ -31,14 +31,18 @@ netdb.h
 -
 iostream
 -
+errno.h
+-
+arpa/inet.h
+-
 server_utility.h
 /home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/server_utility.h
 CircularBuffer.h
 /home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/CircularBuffer.h
 thread_functions.h
 /home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/thread_functions.h
-../Functions.h
-/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/Functions.h
+../common/Functions.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/common/Functions.h
 
 /home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/server_utility.h
 netinet/in.h

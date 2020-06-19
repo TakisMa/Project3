@@ -314,14 +314,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/Functions.cpp">
-			<Option target="Server"/>
-			<Option target="Client"/>
-		</Unit>
-		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/Functions.h">
-			<Option target="Server"/>
-			<Option target="Client"/>
-		</Unit>
 		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/client.cpp">
 			<Option target="Client"/>
 		</Unit>
@@ -338,6 +330,14 @@
 			<Option target="Client"/>
 		</Unit>
 		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/threads.h">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/common/Functions.cpp">
+			<Option target="Server"/>
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/common/Functions.h">
+			<Option target="Server"/>
 			<Option target="Client"/>
 		</Unit>
 		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/CircularBuffer.cpp">

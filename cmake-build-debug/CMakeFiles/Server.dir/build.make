@@ -83,18 +83,18 @@ CMakeFiles/Server.dir/server/server_utility.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/server/server_utility.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/server_utility.cpp" -o CMakeFiles/Server.dir/server/server_utility.cpp.s
 
-CMakeFiles/Server.dir/Functions.cpp.o: CMakeFiles/Server.dir/flags.make
-CMakeFiles/Server.dir/Functions.cpp.o: ../Functions.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Server.dir/Functions.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Server.dir/Functions.cpp.o -c "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/Functions.cpp"
+CMakeFiles/Server.dir/common/Functions.cpp.o: CMakeFiles/Server.dir/flags.make
+CMakeFiles/Server.dir/common/Functions.cpp.o: ../common/Functions.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Server.dir/common/Functions.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Server.dir/common/Functions.cpp.o -c "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/common/Functions.cpp"
 
-CMakeFiles/Server.dir/Functions.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Server.dir/Functions.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/Functions.cpp" > CMakeFiles/Server.dir/Functions.cpp.i
+CMakeFiles/Server.dir/common/Functions.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Server.dir/common/Functions.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/common/Functions.cpp" > CMakeFiles/Server.dir/common/Functions.cpp.i
 
-CMakeFiles/Server.dir/Functions.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/Functions.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/Functions.cpp" -o CMakeFiles/Server.dir/Functions.cpp.s
+CMakeFiles/Server.dir/common/Functions.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/common/Functions.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/common/Functions.cpp" -o CMakeFiles/Server.dir/common/Functions.cpp.s
 
 CMakeFiles/Server.dir/server/CircularBuffer.cpp.o: CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/server/CircularBuffer.cpp.o: ../server/CircularBuffer.cpp
@@ -126,7 +126,7 @@ CMakeFiles/Server.dir/server/thread_functions.cpp.s: cmake_force
 Server_OBJECTS = \
 "CMakeFiles/Server.dir/server/server.cpp.o" \
 "CMakeFiles/Server.dir/server/server_utility.cpp.o" \
-"CMakeFiles/Server.dir/Functions.cpp.o" \
+"CMakeFiles/Server.dir/common/Functions.cpp.o" \
 "CMakeFiles/Server.dir/server/CircularBuffer.cpp.o" \
 "CMakeFiles/Server.dir/server/thread_functions.cpp.o"
 
@@ -135,7 +135,7 @@ Server_EXTERNAL_OBJECTS =
 
 Server: CMakeFiles/Server.dir/server/server.cpp.o
 Server: CMakeFiles/Server.dir/server/server_utility.cpp.o
-Server: CMakeFiles/Server.dir/Functions.cpp.o
+Server: CMakeFiles/Server.dir/common/Functions.cpp.o
 Server: CMakeFiles/Server.dir/server/CircularBuffer.cpp.o
 Server: CMakeFiles/Server.dir/server/thread_functions.cpp.o
 Server: CMakeFiles/Server.dir/build.make
