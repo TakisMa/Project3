@@ -6,7 +6,7 @@
 using namespace std;
 
 void *init_function(void *args) {
-    char buf[1024];
+    char rbuf[1024], sbuf[1024];
     CircularBuffer *buffer=((struct Arguments *) args)->buffer;
     while(true) {
         int fd;
@@ -14,14 +14,16 @@ void *init_function(void *args) {
             fd = buffer->pop();
             if (fd != -1) break;
         }
-        int i=read(fd, buf, sizeof(buf));
+        int i=read(fd, rbuf, sizeof(rbuf));
         if(i > 0) {
-            if(strcmp(buf, "exit") == 0) break;
+            if(strcmp(rbuf, "exit") == 0) break;
             pthread_mutex_lock(&print_mtx);
-            cout << "Read from client: " << buf << endl;
+            cout << "Read from client: " << rbuf << endl;
             pthread_mutex_unlock(&print_mtx);
-            close(fd);
         }
+        strcpy(sbuf, "Server answer");
+        write(fd,sbuf, sizeof(sbuf));
+        close(fd);
     }
     return NULL;
 }

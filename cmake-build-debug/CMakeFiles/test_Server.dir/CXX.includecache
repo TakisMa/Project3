@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/testServer.cpp
+stdio.h
+-
+sys/wait.h
+-
+sys/types.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+netdb.h
+-
+unistd.h
+-
+stdlib.h
+-
+ctype.h
+-
+signal.h
+-
+

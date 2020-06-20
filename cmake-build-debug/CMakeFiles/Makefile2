@@ -53,12 +53,10 @@ CMAKE_BINARY_DIR = "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/mutex_test.dir/all
-all: CMakeFiles/Server.dir/all
-all: CMakeFiles/sumSquares.dir/all
 all: CMakeFiles/Client.dir/all
-all: CMakeFiles/test_Server.dir/all
-all: CMakeFiles/test_Client.dir/all
+all: CMakeFiles/Worker.dir/all
+all: CMakeFiles/Server.dir/all
+all: CMakeFiles/Master.dir/all
 
 .PHONY : all
 
@@ -68,95 +66,12 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/mutex_test.dir/clean
-clean: CMakeFiles/Server.dir/clean
-clean: CMakeFiles/sumSquares.dir/clean
 clean: CMakeFiles/Client.dir/clean
-clean: CMakeFiles/test_Server.dir/clean
-clean: CMakeFiles/test_Client.dir/clean
+clean: CMakeFiles/Worker.dir/clean
+clean: CMakeFiles/Server.dir/clean
+clean: CMakeFiles/Master.dir/clean
 
 .PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/mutex_test.dir
-
-# All Build rule for target.
-CMakeFiles/mutex_test.dir/all:
-	$(MAKE) -f CMakeFiles/mutex_test.dir/build.make CMakeFiles/mutex_test.dir/depend
-	$(MAKE) -f CMakeFiles/mutex_test.dir/build.make CMakeFiles/mutex_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" --progress-num=12,13 "Built target mutex_test"
-.PHONY : CMakeFiles/mutex_test.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/mutex_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mutex_test.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" 0
-.PHONY : CMakeFiles/mutex_test.dir/rule
-
-# Convenience name for target.
-mutex_test: CMakeFiles/mutex_test.dir/rule
-
-.PHONY : mutex_test
-
-# clean rule for target.
-CMakeFiles/mutex_test.dir/clean:
-	$(MAKE) -f CMakeFiles/mutex_test.dir/build.make CMakeFiles/mutex_test.dir/clean
-.PHONY : CMakeFiles/mutex_test.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/Server.dir
-
-# All Build rule for target.
-CMakeFiles/Server.dir/all:
-	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/depend
-	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" --progress-num=6,7,8,9,10,11 "Built target Server"
-.PHONY : CMakeFiles/Server.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/Server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" 6
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Server.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" 0
-.PHONY : CMakeFiles/Server.dir/rule
-
-# Convenience name for target.
-Server: CMakeFiles/Server.dir/rule
-
-.PHONY : Server
-
-# clean rule for target.
-CMakeFiles/Server.dir/clean:
-	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/clean
-.PHONY : CMakeFiles/Server.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/sumSquares.dir
-
-# All Build rule for target.
-CMakeFiles/sumSquares.dir/all:
-	$(MAKE) -f CMakeFiles/sumSquares.dir/build.make CMakeFiles/sumSquares.dir/depend
-	$(MAKE) -f CMakeFiles/sumSquares.dir/build.make CMakeFiles/sumSquares.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" --progress-num=14,15 "Built target sumSquares"
-.PHONY : CMakeFiles/sumSquares.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/sumSquares.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/sumSquares.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" 0
-.PHONY : CMakeFiles/sumSquares.dir/rule
-
-# Convenience name for target.
-sumSquares: CMakeFiles/sumSquares.dir/rule
-
-.PHONY : sumSquares
-
-# clean rule for target.
-CMakeFiles/sumSquares.dir/clean:
-	$(MAKE) -f CMakeFiles/sumSquares.dir/build.make CMakeFiles/sumSquares.dir/clean
-.PHONY : CMakeFiles/sumSquares.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/Client.dir
@@ -186,58 +101,85 @@ CMakeFiles/Client.dir/clean:
 .PHONY : CMakeFiles/Client.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/test_Server.dir
+# Target rules for target CMakeFiles/Worker.dir
 
 # All Build rule for target.
-CMakeFiles/test_Server.dir/all:
-	$(MAKE) -f CMakeFiles/test_Server.dir/build.make CMakeFiles/test_Server.dir/depend
-	$(MAKE) -f CMakeFiles/test_Server.dir/build.make CMakeFiles/test_Server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" --progress-num=18,19 "Built target test_Server"
-.PHONY : CMakeFiles/test_Server.dir/all
+CMakeFiles/Worker.dir/all:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/depend
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" --progress-num=30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45 "Built target Worker"
+.PHONY : CMakeFiles/Worker.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/test_Server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_Server.dir/all
+CMakeFiles/Worker.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" 16
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Worker.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" 0
-.PHONY : CMakeFiles/test_Server.dir/rule
+.PHONY : CMakeFiles/Worker.dir/rule
 
 # Convenience name for target.
-test_Server: CMakeFiles/test_Server.dir/rule
+Worker: CMakeFiles/Worker.dir/rule
 
-.PHONY : test_Server
+.PHONY : Worker
 
 # clean rule for target.
-CMakeFiles/test_Server.dir/clean:
-	$(MAKE) -f CMakeFiles/test_Server.dir/build.make CMakeFiles/test_Server.dir/clean
-.PHONY : CMakeFiles/test_Server.dir/clean
+CMakeFiles/Worker.dir/clean:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/clean
+.PHONY : CMakeFiles/Worker.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/test_Client.dir
+# Target rules for target CMakeFiles/Server.dir
 
 # All Build rule for target.
-CMakeFiles/test_Client.dir/all:
-	$(MAKE) -f CMakeFiles/test_Client.dir/build.make CMakeFiles/test_Client.dir/depend
-	$(MAKE) -f CMakeFiles/test_Client.dir/build.make CMakeFiles/test_Client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" --progress-num=16,17 "Built target test_Client"
-.PHONY : CMakeFiles/test_Client.dir/all
+CMakeFiles/Server.dir/all:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/depend
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" --progress-num=24,25,26,27,28,29 "Built target Server"
+.PHONY : CMakeFiles/Server.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/test_Client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_Client.dir/all
+CMakeFiles/Server.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" 6
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" 0
-.PHONY : CMakeFiles/test_Client.dir/rule
+.PHONY : CMakeFiles/Server.dir/rule
 
 # Convenience name for target.
-test_Client: CMakeFiles/test_Client.dir/rule
+Server: CMakeFiles/Server.dir/rule
 
-.PHONY : test_Client
+.PHONY : Server
 
 # clean rule for target.
-CMakeFiles/test_Client.dir/clean:
-	$(MAKE) -f CMakeFiles/test_Client.dir/build.make CMakeFiles/test_Client.dir/clean
-.PHONY : CMakeFiles/test_Client.dir/clean
+CMakeFiles/Server.dir/clean:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/clean
+.PHONY : CMakeFiles/Server.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Master.dir
+
+# All Build rule for target.
+CMakeFiles/Master.dir/all:
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/depend
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" --progress-num=6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 "Built target Master"
+.PHONY : CMakeFiles/Master.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Master.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" 18
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Master.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/CMakeFiles" 0
+.PHONY : CMakeFiles/Master.dir/rule
+
+# Convenience name for target.
+Master: CMakeFiles/Master.dir/rule
+
+.PHONY : Master
+
+# clean rule for target.
+CMakeFiles/Master.dir/clean:
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/clean
+.PHONY : CMakeFiles/Master.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

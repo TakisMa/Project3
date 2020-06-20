@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/114/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/snap/clion/114/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,17 +111,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named mutex_test
+# Target rules for targets named Client
 
 # Build rule for target.
-mutex_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 mutex_test
-.PHONY : mutex_test
+Client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Client
+.PHONY : Client
 
 # fast build rule for target.
-mutex_test/fast:
-	$(MAKE) -f CMakeFiles/mutex_test.dir/build.make CMakeFiles/mutex_test.dir/build
-.PHONY : mutex_test/fast
+Client/fast:
+	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/build
+.PHONY : Client/fast
+
+#=============================================================================
+# Target rules for targets named Worker
+
+# Build rule for target.
+Worker: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Worker
+.PHONY : Worker
+
+# fast build rule for target.
+Worker/fast:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/build
+.PHONY : Worker/fast
 
 #=============================================================================
 # Target rules for targets named Server
@@ -137,56 +150,17 @@ Server/fast:
 .PHONY : Server/fast
 
 #=============================================================================
-# Target rules for targets named sumSquares
+# Target rules for targets named Master
 
 # Build rule for target.
-sumSquares: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 sumSquares
-.PHONY : sumSquares
+Master: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Master
+.PHONY : Master
 
 # fast build rule for target.
-sumSquares/fast:
-	$(MAKE) -f CMakeFiles/sumSquares.dir/build.make CMakeFiles/sumSquares.dir/build
-.PHONY : sumSquares/fast
-
-#=============================================================================
-# Target rules for targets named Client
-
-# Build rule for target.
-Client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Client
-.PHONY : Client
-
-# fast build rule for target.
-Client/fast:
-	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/build
-.PHONY : Client/fast
-
-#=============================================================================
-# Target rules for targets named test_Server
-
-# Build rule for target.
-test_Server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_Server
-.PHONY : test_Server
-
-# fast build rule for target.
-test_Server/fast:
-	$(MAKE) -f CMakeFiles/test_Server.dir/build.make CMakeFiles/test_Server.dir/build
-.PHONY : test_Server/fast
-
-#=============================================================================
-# Target rules for targets named test_Client
-
-# Build rule for target.
-test_Client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_Client
-.PHONY : test_Client
-
-# fast build rule for target.
-test_Client/fast:
-	$(MAKE) -f CMakeFiles/test_Client.dir/build.make CMakeFiles/test_Client.dir/build
-.PHONY : test_Client/fast
+Master/fast:
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/build
+.PHONY : Master/fast
 
 client/client.o: client/client.cpp.o
 
@@ -242,33 +216,6 @@ client/client_utility.cpp.s:
 	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client/client_utility.cpp.s
 .PHONY : client/client_utility.cpp.s
 
-client/testClient.o: client/testClient.cpp.o
-
-.PHONY : client/testClient.o
-
-# target to build an object file
-client/testClient.cpp.o:
-	$(MAKE) -f CMakeFiles/test_Client.dir/build.make CMakeFiles/test_Client.dir/client/testClient.cpp.o
-.PHONY : client/testClient.cpp.o
-
-client/testClient.i: client/testClient.cpp.i
-
-.PHONY : client/testClient.i
-
-# target to preprocess a source file
-client/testClient.cpp.i:
-	$(MAKE) -f CMakeFiles/test_Client.dir/build.make CMakeFiles/test_Client.dir/client/testClient.cpp.i
-.PHONY : client/testClient.cpp.i
-
-client/testClient.s: client/testClient.cpp.s
-
-.PHONY : client/testClient.s
-
-# target to generate assembly for a file
-client/testClient.cpp.s:
-	$(MAKE) -f CMakeFiles/test_Client.dir/build.make CMakeFiles/test_Client.dir/client/testClient.cpp.s
-.PHONY : client/testClient.cpp.s
-
 client/threads.o: client/threads.cpp.o
 
 .PHONY : client/threads.o
@@ -302,8 +249,8 @@ common/Functions.o: common/Functions.cpp.o
 
 # target to build an object file
 common/Functions.cpp.o:
-	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/common/Functions.cpp.o
 	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/common/Functions.cpp.o
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/common/Functions.cpp.o
 .PHONY : common/Functions.cpp.o
 
 common/Functions.i: common/Functions.cpp.i
@@ -312,8 +259,8 @@ common/Functions.i: common/Functions.cpp.i
 
 # target to preprocess a source file
 common/Functions.cpp.i:
-	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/common/Functions.cpp.i
 	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/common/Functions.cpp.i
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/common/Functions.cpp.i
 .PHONY : common/Functions.cpp.i
 
 common/Functions.s: common/Functions.cpp.s
@@ -322,9 +269,537 @@ common/Functions.s: common/Functions.cpp.s
 
 # target to generate assembly for a file
 common/Functions.cpp.s:
-	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/common/Functions.cpp.s
 	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/common/Functions.cpp.s
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/common/Functions.cpp.s
 .PHONY : common/Functions.cpp.s
+
+master/Bucket.o: master/Bucket.cpp.o
+
+.PHONY : master/Bucket.o
+
+# target to build an object file
+master/Bucket.cpp.o:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Bucket.cpp.o
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Bucket.cpp.o
+.PHONY : master/Bucket.cpp.o
+
+master/Bucket.i: master/Bucket.cpp.i
+
+.PHONY : master/Bucket.i
+
+# target to preprocess a source file
+master/Bucket.cpp.i:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Bucket.cpp.i
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Bucket.cpp.i
+.PHONY : master/Bucket.cpp.i
+
+master/Bucket.s: master/Bucket.cpp.s
+
+.PHONY : master/Bucket.s
+
+# target to generate assembly for a file
+master/Bucket.cpp.s:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Bucket.cpp.s
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Bucket.cpp.s
+.PHONY : master/Bucket.cpp.s
+
+master/BucketList.o: master/BucketList.cpp.o
+
+.PHONY : master/BucketList.o
+
+# target to build an object file
+master/BucketList.cpp.o:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/BucketList.cpp.o
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/BucketList.cpp.o
+.PHONY : master/BucketList.cpp.o
+
+master/BucketList.i: master/BucketList.cpp.i
+
+.PHONY : master/BucketList.i
+
+# target to preprocess a source file
+master/BucketList.cpp.i:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/BucketList.cpp.i
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/BucketList.cpp.i
+.PHONY : master/BucketList.cpp.i
+
+master/BucketList.s: master/BucketList.cpp.s
+
+.PHONY : master/BucketList.s
+
+# target to generate assembly for a file
+master/BucketList.cpp.s:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/BucketList.cpp.s
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/BucketList.cpp.s
+.PHONY : master/BucketList.cpp.s
+
+master/Commands.o: master/Commands.cpp.o
+
+.PHONY : master/Commands.o
+
+# target to build an object file
+master/Commands.cpp.o:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Commands.cpp.o
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Commands.cpp.o
+.PHONY : master/Commands.cpp.o
+
+master/Commands.i: master/Commands.cpp.i
+
+.PHONY : master/Commands.i
+
+# target to preprocess a source file
+master/Commands.cpp.i:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Commands.cpp.i
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Commands.cpp.i
+.PHONY : master/Commands.cpp.i
+
+master/Commands.s: master/Commands.cpp.s
+
+.PHONY : master/Commands.s
+
+# target to generate assembly for a file
+master/Commands.cpp.s:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Commands.cpp.s
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Commands.cpp.s
+.PHONY : master/Commands.cpp.s
+
+master/FileManagement.o: master/FileManagement.cpp.o
+
+.PHONY : master/FileManagement.o
+
+# target to build an object file
+master/FileManagement.cpp.o:
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/FileManagement.cpp.o
+.PHONY : master/FileManagement.cpp.o
+
+master/FileManagement.i: master/FileManagement.cpp.i
+
+.PHONY : master/FileManagement.i
+
+# target to preprocess a source file
+master/FileManagement.cpp.i:
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/FileManagement.cpp.i
+.PHONY : master/FileManagement.cpp.i
+
+master/FileManagement.s: master/FileManagement.cpp.s
+
+.PHONY : master/FileManagement.s
+
+# target to generate assembly for a file
+master/FileManagement.cpp.s:
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/FileManagement.cpp.s
+.PHONY : master/FileManagement.cpp.s
+
+master/Functions.o: master/Functions.cpp.o
+
+.PHONY : master/Functions.o
+
+# target to build an object file
+master/Functions.cpp.o:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Functions.cpp.o
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Functions.cpp.o
+.PHONY : master/Functions.cpp.o
+
+master/Functions.i: master/Functions.cpp.i
+
+.PHONY : master/Functions.i
+
+# target to preprocess a source file
+master/Functions.cpp.i:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Functions.cpp.i
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Functions.cpp.i
+.PHONY : master/Functions.cpp.i
+
+master/Functions.s: master/Functions.cpp.s
+
+.PHONY : master/Functions.s
+
+# target to generate assembly for a file
+master/Functions.cpp.s:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Functions.cpp.s
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Functions.cpp.s
+.PHONY : master/Functions.cpp.s
+
+master/Hashtable.o: master/Hashtable.cpp.o
+
+.PHONY : master/Hashtable.o
+
+# target to build an object file
+master/Hashtable.cpp.o:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Hashtable.cpp.o
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Hashtable.cpp.o
+.PHONY : master/Hashtable.cpp.o
+
+master/Hashtable.i: master/Hashtable.cpp.i
+
+.PHONY : master/Hashtable.i
+
+# target to preprocess a source file
+master/Hashtable.cpp.i:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Hashtable.cpp.i
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Hashtable.cpp.i
+.PHONY : master/Hashtable.cpp.i
+
+master/Hashtable.s: master/Hashtable.cpp.s
+
+.PHONY : master/Hashtable.s
+
+# target to generate assembly for a file
+master/Hashtable.cpp.s:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Hashtable.cpp.s
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Hashtable.cpp.s
+.PHONY : master/Hashtable.cpp.s
+
+master/Heap.o: master/Heap.cpp.o
+
+.PHONY : master/Heap.o
+
+# target to build an object file
+master/Heap.cpp.o:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Heap.cpp.o
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Heap.cpp.o
+.PHONY : master/Heap.cpp.o
+
+master/Heap.i: master/Heap.cpp.i
+
+.PHONY : master/Heap.i
+
+# target to preprocess a source file
+master/Heap.cpp.i:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Heap.cpp.i
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Heap.cpp.i
+.PHONY : master/Heap.cpp.i
+
+master/Heap.s: master/Heap.cpp.s
+
+.PHONY : master/Heap.s
+
+# target to generate assembly for a file
+master/Heap.cpp.s:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Heap.cpp.s
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Heap.cpp.s
+.PHONY : master/Heap.cpp.s
+
+master/HeapNode.o: master/HeapNode.cpp.o
+
+.PHONY : master/HeapNode.o
+
+# target to build an object file
+master/HeapNode.cpp.o:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/HeapNode.cpp.o
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/HeapNode.cpp.o
+.PHONY : master/HeapNode.cpp.o
+
+master/HeapNode.i: master/HeapNode.cpp.i
+
+.PHONY : master/HeapNode.i
+
+# target to preprocess a source file
+master/HeapNode.cpp.i:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/HeapNode.cpp.i
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/HeapNode.cpp.i
+.PHONY : master/HeapNode.cpp.i
+
+master/HeapNode.s: master/HeapNode.cpp.s
+
+.PHONY : master/HeapNode.s
+
+# target to generate assembly for a file
+master/HeapNode.cpp.s:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/HeapNode.cpp.s
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/HeapNode.cpp.s
+.PHONY : master/HeapNode.cpp.s
+
+master/ListNode.o: master/ListNode.cpp.o
+
+.PHONY : master/ListNode.o
+
+# target to build an object file
+master/ListNode.cpp.o:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/ListNode.cpp.o
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/ListNode.cpp.o
+.PHONY : master/ListNode.cpp.o
+
+master/ListNode.i: master/ListNode.cpp.i
+
+.PHONY : master/ListNode.i
+
+# target to preprocess a source file
+master/ListNode.cpp.i:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/ListNode.cpp.i
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/ListNode.cpp.i
+.PHONY : master/ListNode.cpp.i
+
+master/ListNode.s: master/ListNode.cpp.s
+
+.PHONY : master/ListNode.s
+
+# target to generate assembly for a file
+master/ListNode.cpp.s:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/ListNode.cpp.s
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/ListNode.cpp.s
+.PHONY : master/ListNode.cpp.s
+
+master/Record.o: master/Record.cpp.o
+
+.PHONY : master/Record.o
+
+# target to build an object file
+master/Record.cpp.o:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Record.cpp.o
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Record.cpp.o
+.PHONY : master/Record.cpp.o
+
+master/Record.i: master/Record.cpp.i
+
+.PHONY : master/Record.i
+
+# target to preprocess a source file
+master/Record.cpp.i:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Record.cpp.i
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Record.cpp.i
+.PHONY : master/Record.cpp.i
+
+master/Record.s: master/Record.cpp.s
+
+.PHONY : master/Record.s
+
+# target to generate assembly for a file
+master/Record.cpp.s:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Record.cpp.s
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Record.cpp.s
+.PHONY : master/Record.cpp.s
+
+master/RecordIDManagement.o: master/RecordIDManagement.cpp.o
+
+.PHONY : master/RecordIDManagement.o
+
+# target to build an object file
+master/RecordIDManagement.cpp.o:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/RecordIDManagement.cpp.o
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/RecordIDManagement.cpp.o
+.PHONY : master/RecordIDManagement.cpp.o
+
+master/RecordIDManagement.i: master/RecordIDManagement.cpp.i
+
+.PHONY : master/RecordIDManagement.i
+
+# target to preprocess a source file
+master/RecordIDManagement.cpp.i:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/RecordIDManagement.cpp.i
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/RecordIDManagement.cpp.i
+.PHONY : master/RecordIDManagement.cpp.i
+
+master/RecordIDManagement.s: master/RecordIDManagement.cpp.s
+
+.PHONY : master/RecordIDManagement.s
+
+# target to generate assembly for a file
+master/RecordIDManagement.cpp.s:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/RecordIDManagement.cpp.s
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/RecordIDManagement.cpp.s
+.PHONY : master/RecordIDManagement.cpp.s
+
+master/SignalHandling.o: master/SignalHandling.cpp.o
+
+.PHONY : master/SignalHandling.o
+
+# target to build an object file
+master/SignalHandling.cpp.o:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/SignalHandling.cpp.o
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/SignalHandling.cpp.o
+.PHONY : master/SignalHandling.cpp.o
+
+master/SignalHandling.i: master/SignalHandling.cpp.i
+
+.PHONY : master/SignalHandling.i
+
+# target to preprocess a source file
+master/SignalHandling.cpp.i:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/SignalHandling.cpp.i
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/SignalHandling.cpp.i
+.PHONY : master/SignalHandling.cpp.i
+
+master/SignalHandling.s: master/SignalHandling.cpp.s
+
+.PHONY : master/SignalHandling.s
+
+# target to generate assembly for a file
+master/SignalHandling.cpp.s:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/SignalHandling.cpp.s
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/SignalHandling.cpp.s
+.PHONY : master/SignalHandling.cpp.s
+
+master/SummaryList.o: master/SummaryList.cpp.o
+
+.PHONY : master/SummaryList.o
+
+# target to build an object file
+master/SummaryList.cpp.o:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/SummaryList.cpp.o
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/SummaryList.cpp.o
+.PHONY : master/SummaryList.cpp.o
+
+master/SummaryList.i: master/SummaryList.cpp.i
+
+.PHONY : master/SummaryList.i
+
+# target to preprocess a source file
+master/SummaryList.cpp.i:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/SummaryList.cpp.i
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/SummaryList.cpp.i
+.PHONY : master/SummaryList.cpp.i
+
+master/SummaryList.s: master/SummaryList.cpp.s
+
+.PHONY : master/SummaryList.s
+
+# target to generate assembly for a file
+master/SummaryList.cpp.s:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/SummaryList.cpp.s
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/SummaryList.cpp.s
+.PHONY : master/SummaryList.cpp.s
+
+master/SummaryManagement.o: master/SummaryManagement.cpp.o
+
+.PHONY : master/SummaryManagement.o
+
+# target to build an object file
+master/SummaryManagement.cpp.o:
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/SummaryManagement.cpp.o
+.PHONY : master/SummaryManagement.cpp.o
+
+master/SummaryManagement.i: master/SummaryManagement.cpp.i
+
+.PHONY : master/SummaryManagement.i
+
+# target to preprocess a source file
+master/SummaryManagement.cpp.i:
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/SummaryManagement.cpp.i
+.PHONY : master/SummaryManagement.cpp.i
+
+master/SummaryManagement.s: master/SummaryManagement.cpp.s
+
+.PHONY : master/SummaryManagement.s
+
+# target to generate assembly for a file
+master/SummaryManagement.cpp.s:
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/SummaryManagement.cpp.s
+.PHONY : master/SummaryManagement.cpp.s
+
+master/Tree.o: master/Tree.cpp.o
+
+.PHONY : master/Tree.o
+
+# target to build an object file
+master/Tree.cpp.o:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Tree.cpp.o
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Tree.cpp.o
+.PHONY : master/Tree.cpp.o
+
+master/Tree.i: master/Tree.cpp.i
+
+.PHONY : master/Tree.i
+
+# target to preprocess a source file
+master/Tree.cpp.i:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Tree.cpp.i
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Tree.cpp.i
+.PHONY : master/Tree.cpp.i
+
+master/Tree.s: master/Tree.cpp.s
+
+.PHONY : master/Tree.s
+
+# target to generate assembly for a file
+master/Tree.cpp.s:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Tree.cpp.s
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/Tree.cpp.s
+.PHONY : master/Tree.cpp.s
+
+master/TreeNode.o: master/TreeNode.cpp.o
+
+.PHONY : master/TreeNode.o
+
+# target to build an object file
+master/TreeNode.cpp.o:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/TreeNode.cpp.o
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/TreeNode.cpp.o
+.PHONY : master/TreeNode.cpp.o
+
+master/TreeNode.i: master/TreeNode.cpp.i
+
+.PHONY : master/TreeNode.i
+
+# target to preprocess a source file
+master/TreeNode.cpp.i:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/TreeNode.cpp.i
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/TreeNode.cpp.i
+.PHONY : master/TreeNode.cpp.i
+
+master/TreeNode.s: master/TreeNode.cpp.s
+
+.PHONY : master/TreeNode.s
+
+# target to generate assembly for a file
+master/TreeNode.cpp.s:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/TreeNode.cpp.s
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/TreeNode.cpp.s
+.PHONY : master/TreeNode.cpp.s
+
+master/Worker.o: master/Worker.cpp.o
+
+.PHONY : master/Worker.o
+
+# target to build an object file
+master/Worker.cpp.o:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Worker.cpp.o
+.PHONY : master/Worker.cpp.o
+
+master/Worker.i: master/Worker.cpp.i
+
+.PHONY : master/Worker.i
+
+# target to preprocess a source file
+master/Worker.cpp.i:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Worker.cpp.i
+.PHONY : master/Worker.cpp.i
+
+master/Worker.s: master/Worker.cpp.s
+
+.PHONY : master/Worker.s
+
+# target to generate assembly for a file
+master/Worker.cpp.s:
+	$(MAKE) -f CMakeFiles/Worker.dir/build.make CMakeFiles/Worker.dir/master/Worker.cpp.s
+.PHONY : master/Worker.cpp.s
+
+master/main.o: master/main.cpp.o
+
+.PHONY : master/main.o
+
+# target to build an object file
+master/main.cpp.o:
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/main.cpp.o
+.PHONY : master/main.cpp.o
+
+master/main.i: master/main.cpp.i
+
+.PHONY : master/main.i
+
+# target to preprocess a source file
+master/main.cpp.i:
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/main.cpp.i
+.PHONY : master/main.cpp.i
+
+master/main.s: master/main.cpp.s
+
+.PHONY : master/main.s
+
+# target to generate assembly for a file
+master/main.cpp.s:
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/master/main.cpp.s
+.PHONY : master/main.cpp.s
 
 server/CircularBuffer.o: server/CircularBuffer.cpp.o
 
@@ -407,33 +882,6 @@ server/server_utility.cpp.s:
 	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/server/server_utility.cpp.s
 .PHONY : server/server_utility.cpp.s
 
-server/testServer.o: server/testServer.cpp.o
-
-.PHONY : server/testServer.o
-
-# target to build an object file
-server/testServer.cpp.o:
-	$(MAKE) -f CMakeFiles/test_Server.dir/build.make CMakeFiles/test_Server.dir/server/testServer.cpp.o
-.PHONY : server/testServer.cpp.o
-
-server/testServer.i: server/testServer.cpp.i
-
-.PHONY : server/testServer.i
-
-# target to preprocess a source file
-server/testServer.cpp.i:
-	$(MAKE) -f CMakeFiles/test_Server.dir/build.make CMakeFiles/test_Server.dir/server/testServer.cpp.i
-.PHONY : server/testServer.cpp.i
-
-server/testServer.s: server/testServer.cpp.s
-
-.PHONY : server/testServer.s
-
-# target to generate assembly for a file
-server/testServer.cpp.s:
-	$(MAKE) -f CMakeFiles/test_Server.dir/build.make CMakeFiles/test_Server.dir/server/testServer.cpp.s
-.PHONY : server/testServer.cpp.s
-
 server/thread_functions.o: server/thread_functions.cpp.o
 
 .PHONY : server/thread_functions.o
@@ -461,89 +909,84 @@ server/thread_functions.cpp.s:
 	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/server/thread_functions.cpp.s
 .PHONY : server/thread_functions.cpp.s
 
-thread/mutex_test.o: thread/mutex_test.cpp.o
-
-.PHONY : thread/mutex_test.o
-
-# target to build an object file
-thread/mutex_test.cpp.o:
-	$(MAKE) -f CMakeFiles/mutex_test.dir/build.make CMakeFiles/mutex_test.dir/thread/mutex_test.cpp.o
-.PHONY : thread/mutex_test.cpp.o
-
-thread/mutex_test.i: thread/mutex_test.cpp.i
-
-.PHONY : thread/mutex_test.i
-
-# target to preprocess a source file
-thread/mutex_test.cpp.i:
-	$(MAKE) -f CMakeFiles/mutex_test.dir/build.make CMakeFiles/mutex_test.dir/thread/mutex_test.cpp.i
-.PHONY : thread/mutex_test.cpp.i
-
-thread/mutex_test.s: thread/mutex_test.cpp.s
-
-.PHONY : thread/mutex_test.s
-
-# target to generate assembly for a file
-thread/mutex_test.cpp.s:
-	$(MAKE) -f CMakeFiles/mutex_test.dir/build.make CMakeFiles/mutex_test.dir/thread/mutex_test.cpp.s
-.PHONY : thread/mutex_test.cpp.s
-
-thread/sumSquares.o: thread/sumSquares.cpp.o
-
-.PHONY : thread/sumSquares.o
-
-# target to build an object file
-thread/sumSquares.cpp.o:
-	$(MAKE) -f CMakeFiles/sumSquares.dir/build.make CMakeFiles/sumSquares.dir/thread/sumSquares.cpp.o
-.PHONY : thread/sumSquares.cpp.o
-
-thread/sumSquares.i: thread/sumSquares.cpp.i
-
-.PHONY : thread/sumSquares.i
-
-# target to preprocess a source file
-thread/sumSquares.cpp.i:
-	$(MAKE) -f CMakeFiles/sumSquares.dir/build.make CMakeFiles/sumSquares.dir/thread/sumSquares.cpp.i
-.PHONY : thread/sumSquares.cpp.i
-
-thread/sumSquares.s: thread/sumSquares.cpp.s
-
-.PHONY : thread/sumSquares.s
-
-# target to generate assembly for a file
-thread/sumSquares.cpp.s:
-	$(MAKE) -f CMakeFiles/sumSquares.dir/build.make CMakeFiles/sumSquares.dir/thread/sumSquares.cpp.s
-.PHONY : thread/sumSquares.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... mutex_test"
-	@echo "... Server"
-	@echo "... sumSquares"
 	@echo "... Client"
-	@echo "... test_Server"
-	@echo "... test_Client"
+	@echo "... rebuild_cache"
+	@echo "... Worker"
+	@echo "... Server"
+	@echo "... Master"
 	@echo "... client/client.o"
 	@echo "... client/client.i"
 	@echo "... client/client.s"
 	@echo "... client/client_utility.o"
 	@echo "... client/client_utility.i"
 	@echo "... client/client_utility.s"
-	@echo "... client/testClient.o"
-	@echo "... client/testClient.i"
-	@echo "... client/testClient.s"
 	@echo "... client/threads.o"
 	@echo "... client/threads.i"
 	@echo "... client/threads.s"
 	@echo "... common/Functions.o"
 	@echo "... common/Functions.i"
 	@echo "... common/Functions.s"
+	@echo "... master/Bucket.o"
+	@echo "... master/Bucket.i"
+	@echo "... master/Bucket.s"
+	@echo "... master/BucketList.o"
+	@echo "... master/BucketList.i"
+	@echo "... master/BucketList.s"
+	@echo "... master/Commands.o"
+	@echo "... master/Commands.i"
+	@echo "... master/Commands.s"
+	@echo "... master/FileManagement.o"
+	@echo "... master/FileManagement.i"
+	@echo "... master/FileManagement.s"
+	@echo "... master/Functions.o"
+	@echo "... master/Functions.i"
+	@echo "... master/Functions.s"
+	@echo "... master/Hashtable.o"
+	@echo "... master/Hashtable.i"
+	@echo "... master/Hashtable.s"
+	@echo "... master/Heap.o"
+	@echo "... master/Heap.i"
+	@echo "... master/Heap.s"
+	@echo "... master/HeapNode.o"
+	@echo "... master/HeapNode.i"
+	@echo "... master/HeapNode.s"
+	@echo "... master/ListNode.o"
+	@echo "... master/ListNode.i"
+	@echo "... master/ListNode.s"
+	@echo "... master/Record.o"
+	@echo "... master/Record.i"
+	@echo "... master/Record.s"
+	@echo "... master/RecordIDManagement.o"
+	@echo "... master/RecordIDManagement.i"
+	@echo "... master/RecordIDManagement.s"
+	@echo "... master/SignalHandling.o"
+	@echo "... master/SignalHandling.i"
+	@echo "... master/SignalHandling.s"
+	@echo "... master/SummaryList.o"
+	@echo "... master/SummaryList.i"
+	@echo "... master/SummaryList.s"
+	@echo "... master/SummaryManagement.o"
+	@echo "... master/SummaryManagement.i"
+	@echo "... master/SummaryManagement.s"
+	@echo "... master/Tree.o"
+	@echo "... master/Tree.i"
+	@echo "... master/Tree.s"
+	@echo "... master/TreeNode.o"
+	@echo "... master/TreeNode.i"
+	@echo "... master/TreeNode.s"
+	@echo "... master/Worker.o"
+	@echo "... master/Worker.i"
+	@echo "... master/Worker.s"
+	@echo "... master/main.o"
+	@echo "... master/main.i"
+	@echo "... master/main.s"
 	@echo "... server/CircularBuffer.o"
 	@echo "... server/CircularBuffer.i"
 	@echo "... server/CircularBuffer.s"
@@ -553,18 +996,9 @@ help:
 	@echo "... server/server_utility.o"
 	@echo "... server/server_utility.i"
 	@echo "... server/server_utility.s"
-	@echo "... server/testServer.o"
-	@echo "... server/testServer.i"
-	@echo "... server/testServer.s"
 	@echo "... server/thread_functions.o"
 	@echo "... server/thread_functions.i"
 	@echo "... server/thread_functions.s"
-	@echo "... thread/mutex_test.o"
-	@echo "... thread/mutex_test.i"
-	@echo "... thread/mutex_test.s"
-	@echo "... thread/sumSquares.o"
-	@echo "... thread/sumSquares.i"
-	@echo "... thread/sumSquares.s"
 .PHONY : help
 
 

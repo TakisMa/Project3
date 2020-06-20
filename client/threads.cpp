@@ -67,10 +67,19 @@ void *t_function(void *args) {
             perror("Failed to connect to server\n");
         }
         write(sock_desc, sbuff, sizeof(sbuff));
+
+
         pthread_mutex_lock(&print_mutex);
-        cout << "fd: " << sock_desc << " threads line sent: " << sbuff << endl;
-        pthread_mutex_unlock(&print_mutex);
+        cout << "fd: " << sock_desc << " threads line sent: " << sbuff;
+//        pthread_mutex_unlock(&print_mutex);
     }
+    char rbuff[1024];
+    int i = read(sock_desc, rbuff, sizeof(rbuff));
+//    pthread_mutex_lock(&print_mutex);
+    if(i > 0) cout << "ANSWER: " << rbuff << endl;
+    cout << endl;
+    pthread_mutex_unlock(&print_mutex);
+
     close(sock_desc);
     return NULL;
 }

@@ -48,10 +48,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/mutex_test.dir/DependInfo.cmake"
-  "CMakeFiles/Server.dir/DependInfo.cmake"
-  "CMakeFiles/sumSquares.dir/DependInfo.cmake"
   "CMakeFiles/Client.dir/DependInfo.cmake"
-  "CMakeFiles/test_Server.dir/DependInfo.cmake"
-  "CMakeFiles/test_Client.dir/DependInfo.cmake"
+  "CMakeFiles/Worker.dir/DependInfo.cmake"
+  "CMakeFiles/Server.dir/DependInfo.cmake"
+  "CMakeFiles/Master.dir/DependInfo.cmake"
   )

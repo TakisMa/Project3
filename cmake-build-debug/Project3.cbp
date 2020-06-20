@@ -17,159 +17,11 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="rebuild_cache">
-				<Option working_dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 			<Target title="edit_cache">
 				<Option working_dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
 					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="mutex_test">
-				<Option output="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/mutex_test" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/7"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
-					<Add directory="/usr/include/c++/7/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 mutex_test"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="mutex_test/fast">
-				<Option output="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/mutex_test" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/7"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
-					<Add directory="/usr/include/c++/7/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 mutex_test/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="Server">
-				<Option output="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/Server" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/7"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
-					<Add directory="/usr/include/c++/7/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 Server"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="Server/fast">
-				<Option output="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/Server" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/7"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
-					<Add directory="/usr/include/c++/7/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 Server/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="sumSquares">
-				<Option output="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/sumSquares" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/7"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
-					<Add directory="/usr/include/c++/7/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 sumSquares"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="sumSquares/fast">
-				<Option output="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/sumSquares" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/7"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
-					<Add directory="/usr/include/c++/7/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 sumSquares/fast"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -221,31 +73,18 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="test_Server">
-				<Option output="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/test_Server" prefix_auto="0" extension_auto="0"/>
+			<Target title="rebuild_cache">
 				<Option working_dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/7"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
-					<Add directory="/usr/include/c++/7/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
+				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 test_Server"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="test_Server/fast">
-				<Option output="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/test_Server" prefix_auto="0" extension_auto="0"/>
+			<Target title="Worker">
+				<Option output="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/Worker" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -261,14 +100,14 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 test_Server/fast"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 Worker"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="test_Client">
-				<Option output="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/test_Client" prefix_auto="0" extension_auto="0"/>
+			<Target title="Worker/fast">
+				<Option output="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/Worker" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -284,14 +123,14 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 test_Client"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 Worker/fast"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="test_Client/fast">
-				<Option output="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/test_Client" prefix_auto="0" extension_auto="0"/>
+			<Target title="Server">
+				<Option output="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/Server" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -307,7 +146,76 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 test_Client/fast"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 Server"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Server/fast">
+				<Option output="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/Server" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 Server/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Master">
+				<Option output="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/Master" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 Master"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Master/fast">
+				<Option output="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug/Master" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 Master/fast"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/takis/Documents/DI/6ο\ εξαμηνο/SysPro/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -323,9 +231,6 @@
 		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/client_utility.h">
 			<Option target="Client"/>
 		</Unit>
-		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/testClient.cpp">
-			<Option target="test_Client"/>
-		</Unit>
 		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/client/threads.cpp">
 			<Option target="Client"/>
 		</Unit>
@@ -333,12 +238,142 @@
 			<Option target="Client"/>
 		</Unit>
 		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/common/Functions.cpp">
-			<Option target="Server"/>
 			<Option target="Client"/>
+			<Option target="Server"/>
 		</Unit>
 		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/common/Functions.h">
-			<Option target="Server"/>
 			<Option target="Client"/>
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Bucket.cpp">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Bucket.h">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/BucketList.cpp">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/BucketList.h">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Commands.cpp">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Commands.h">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/FileManagement.cpp">
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/FileManagement.h">
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Functions.cpp">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Functions.h">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Hashtable.cpp">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Hashtable.h">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Heap.cpp">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Heap.h">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/HeapNode.cpp">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/HeapNode.h">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/ListNode.cpp">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/ListNode.h">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Record.cpp">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Record.h">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/RecordIDManagement.cpp">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/RecordIDManagement.h">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/SignalHandling.cpp">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/SignalHandling.h">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/SummaryList.cpp">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/SummaryList.h">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/SummaryManagement.cpp">
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/SummaryManagement.h">
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Tree.cpp">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Tree.h">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/TreeNode.cpp">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/TreeNode.h">
+			<Option target="Worker"/>
+			<Option target="Master"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Worker.cpp">
+			<Option target="Worker"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/main.cpp">
+			<Option target="Master"/>
 		</Unit>
 		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/CircularBuffer.cpp">
 			<Option target="Server"/>
@@ -355,20 +390,11 @@
 		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/server_utility.h">
 			<Option target="Server"/>
 		</Unit>
-		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/testServer.cpp">
-			<Option target="test_Server"/>
-		</Unit>
 		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/thread_functions.cpp">
 			<Option target="Server"/>
 		</Unit>
 		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/thread_functions.h">
 			<Option target="Server"/>
-		</Unit>
-		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/thread/mutex_test.cpp">
-			<Option target="mutex_test"/>
-		</Unit>
-		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/thread/sumSquares.cpp">
-			<Option target="sumSquares"/>
 		</Unit>
 		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

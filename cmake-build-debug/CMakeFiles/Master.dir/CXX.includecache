@@ -1,0 +1,132 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Bucket.h
+cstdlib
+-
+Record.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Record.h
+ListNode.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/ListNode.h
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/BucketList.h
+Bucket.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Bucket.h
+Record.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Record.h
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/FileManagement.h
+string
+-
+unistd.h
+-
+sys/types.h
+-
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Functions.h
+Record.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Record.h
+Hashtable.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Hashtable.h
+RecordIDManagement.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/RecordIDManagement.h
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Hashtable.h
+Bucket.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Bucket.h
+BucketList.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/BucketList.h
+Record.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Record.h
+Tree.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Tree.h
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Heap.h
+math.h
+-
+HeapNode.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/HeapNode.h
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/HeapNode.h
+iostream
+-
+Record.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Record.h
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/ListNode.h
+iostream
+-
+cstdlib
+-
+Record.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Record.h
+Tree.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Tree.h
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Record.h
+string
+-
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/RecordIDManagement.h
+iostream
+-
+Record.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Record.h
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/SignalHandling.h
+signal.h
+-
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/SummaryManagement.h
+iostream
+-
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Tree.h
+cstdlib
+-
+TreeNode.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/TreeNode.h
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/TreeNode.h
+iostream
+-
+cstdlib
+-
+Record.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Record.h
+Heap.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Heap.h
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/main.cpp
+iostream
+-
+unistd.h
+-
+dirent.h
+-
+sys/wait.h
+-
+sys/stat.h
+-
+fcntl.h
+-
+cstring
+-
+string
+-
+sstream
+-
+Functions.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Functions.h
+SummaryManagement.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/SummaryManagement.h
+SignalHandling.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/SignalHandling.h
+FileManagement.h
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/FileManagement.h
+

@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/thread/mutex_test.cpp
+iostream
+-
+cstdio
+-
+cstdlib
+-
+string
+-
+pthread.h
+-
+cstring
+-
+

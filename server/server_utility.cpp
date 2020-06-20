@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <stdio.h>
+#define BACKLOG 10
 
 void perror_exit(char *message) {
     perror(message);
@@ -30,7 +31,8 @@ int socket_setup(struct sockaddr_in *serverQ, struct sockaddr_in *serverS, struc
     if (bind(sockS, serverS_ptr, sizeof(*serverS)) < 0)
         perror_exit("Statistics bind");
 /* Listen for connections */
-    if (listen(sockQ, 5) < 0) perror_exit("Query listen");
-    if (listen(sockS, 5) < 0) perror_exit("Statistics listen");
+    if (listen(sockQ, BACKLOG) < 0) perror_exit("Query listen");
+    if (listen(sockS, BACKLOG) < 0) perror_exit("Statistics listen");
 
+    return 0;
 }
