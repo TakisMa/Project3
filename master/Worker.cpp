@@ -122,6 +122,8 @@ int main(int argc, char* argv[]) {
             c = strtok(NULL, "/");
             char *country=new char[strlen(c)+1];
             strcpy(country,c);
+            /*strcpy(sbuf, "SUMMARY");
+            write(sock_desc, sbuf, sizeof(sbuf));*/
             initialize_record(filepath, country, diseaseHT, countryHT, idHT, fd2, sock_desc, bufferSize);
             delete [] country;
         }
@@ -134,26 +136,37 @@ int main(int argc, char* argv[]) {
     unlink(myfifo);
     unlink(auxfifo);
 
-
     /* Setting up sockets for server communication */
 //    socket_setup(fd2, serverPort, serverIP, &serv_addr);
 
-
-
+    int new_fd;
     clientlen = sizeof(client);
-    if ((fd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
-        perror("Query socket");
+    if ((new_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0)perror("worker socket");
     my_sock.sin_family = AF_INET;  /*Internet domain */
     my_sock.sin_addr.s_addr = htonl(INADDR_ANY);
     my_sock.sin_port = htons(serverPort+offset);  /*The given port*/
-    if(bind(fd, mysock_ptr, sizeof(my_sock)) < 0) perror("worker bind");
-    if(listen(fd, 10) < 0) perror("worker listen");
-    if(accept(fd, (struct sockaddr *) &client, &clientlen) < 0) perror("worker accept");
-    read(fd, rbuf, sizeof(rbuf));
-    cout << "worker read from server: " << rbuf << endl;
-    strcpy(sbuf, "hi from worker");
-    write(sock_desc, sbuf, sizeof(sbuf));
-    while(1);
+    if(bind(new_fd, mysock_ptr, sizeof(my_sock)) < 0) perror("worker bind");
+    if(listen(new_fd, 10) < 0) perror("worker listen");
+    if((fd = accept(new_fd, (struct sockaddr *) &client, &clientlen)) < 0) perror("worker accept");
+    int noAnswer = 0;
+    do {
+        int c=0;
+        while (c < 1024) {
+            cout << "A" << endl;
+            c += read(fd, rbuf + c, sizeof(rbuf));
+            if (c < 0) {
+                perror("worker read");
+                exit(0);
+            }
+            else if(c == 0) break;
+        }
+        cout << "worker read from server: " << rbuf << endl;
+        sprintf(sbuf, "hi from worker #%d", noAnswer);
+        cout << "B" << endl;
+        write(sock_desc, sbuf, sizeof(sbuf));
+        cout << "C" << endl;
+        noAnswer ++;
+    }while(1);
 
     while(signals != SIGINT){
         /*Error & signal handling */

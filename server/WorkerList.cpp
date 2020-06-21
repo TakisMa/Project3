@@ -11,7 +11,6 @@ using namespace std;
 /* Node functions */
 
 void WorkerListNode::sendMessage(char *message) {
-    if(workerPort == 0) return;
     char sbuf[1024];
     strcpy(sbuf, message);
     int wfd;
@@ -24,8 +23,8 @@ void WorkerListNode::sendMessage(char *message) {
     bzero((char *) &addr, sizeof (addr));
 
     addr.sin_family = AF_INET;
-    getpeername(rfd, (struct sockaddr*) &addr, addrlen);
-//    serv_addr.sin_addr.s_addr = inet_addr(serverIP);
+//    getpeername(rfd, (struct sockaddr*) &addr, addrlen);
+    addr.sin_addr.s_addr = inet_addr(workerIP);
     //serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
     addr.sin_port = htons(workerPort);
     if (connect(wfd, (struct sockaddr *) &addr, sizeof(addr)) < 0) {
@@ -33,16 +32,24 @@ void WorkerListNode::sendMessage(char *message) {
         exit(5);
     }
     write(wfd, sbuf, sizeof(sbuf));
+    cout << "wrote to worker: " << sbuf << endl;
+    if(next) next->sendMessage(message);
 }
 
 void WorkerListNode::recvMessage() {
     char rbuf[1024];
-    read(rfd, rbuf, sizeof(rbuf));
-    cout << "A: " << rbuf << endl;
+    int i = read(rfd, rbuf, sizeof(rbuf));
+    if(i >= 0) cout << "A: " << rbuf << endl;
+    else if(i < 0) {
+        perror("recvMessage()");
+        return;
+    }
+    else if(next) next->recvMessage();
 }
 
-WorkerListNode::WorkerListNode(int fd, int workerPort, WorkerListNode *next) {
-    this->rfd = fd;
+WorkerListNode::WorkerListNode(int rfd, char *workerIP, int workerPort, WorkerListNode *next) {
+    this->rfd = rfd;
+    this->workerIP = workerIP;
     this->workerPort = workerPort;
     this->next = next;
 }
@@ -52,23 +59,17 @@ WorkerListNode::~WorkerListNode() {
 }
 
 /* List functions */
-void WorkerList::insert(int fd, int workerPort) {
-    WorkerListNode *new_node = new WorkerListNode(fd, workerPort, head);
-    head = new_node;
+void WorkerList::insert(int fd, char* workerIP, int workerPort) {
+    head = new WorkerListNode(fd, workerIP, workerPort, head);
 }
 
 void WorkerList::sendtoAll(char *message) {
-    WorkerListNode *tmp = head;
-    while(tmp) {
-        tmp->sendMessage(message);
-    }
+    if(head) head->sendMessage(message);
 }
 
 void WorkerList::recvAll() {
-    WorkerListNode *tmp = head;
-    while(tmp) {
-        tmp->recvMessage();
-    }
+   if(head) head->recvMessage();
+   cout << "finished" << endl;
 }
 
 WorkerList::WorkerList() {

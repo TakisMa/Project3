@@ -8,6 +8,7 @@
 class WorkerListNode {
 private:
     int rfd;
+    char *workerIP;
     int workerPort;
     WorkerListNode *next;
 public:
@@ -15,7 +16,7 @@ public:
     void recvMessage();
 
 
-    WorkerListNode(int fd, int workerPort, WorkerListNode *next);
+    WorkerListNode(int rfd, char *workerIP, int workerPort, WorkerListNode *next);
     ~WorkerListNode();
 };
 
@@ -23,7 +24,7 @@ class WorkerList {
 private:
     WorkerListNode *head;
 public:
-    void insert(int fd, int workerPort);
+    void insert(int rfd, char *workerIP, int workerPort);
     void sendtoAll(char *message);
     void recvAll();
 

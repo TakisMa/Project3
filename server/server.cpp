@@ -15,11 +15,11 @@
 #include "WorkerList.h"
 
 pthread_mutex_t mtx = PTHREAD_MUTEX_INITIALIZER;
-pthread_mutex_t list_mtx = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t f_mtx = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t print_mtx = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t cond_nonfull = PTHREAD_COND_INITIALIZER;
 pthread_cond_t cond_nonempty = PTHREAD_COND_INITIALIZER;
-
+bool finished_summaries;
 
 
 int main(int argc, char *argv[]) {
@@ -35,6 +35,7 @@ int main(int argc, char *argv[]) {
     if(checkServerArguments(argc, argv, queryPort, statisticsPort, numThreads, bufferSize) < 0) {
         perror("initialization");
     }
+    finished_summaries = false;
     threads = new pthread_t[numThreads];
     fd = new CircularBuffer(bufferSize);
     wl = new WorkerList();
@@ -63,11 +64,75 @@ int main(int argc, char *argv[]) {
 
 
     FD_ZERO(&active_fd_set);
-    FD_SET(sockQ, &active_fd_set);
+//    FD_SET(sockQ, &active_fd_set);
     FD_SET(sockS, &active_fd_set);
     int new_sockfd;
     clientlen = sizeof(client);
+    int client_fd, worker_fd;
+    int j = 0;
 
+
+    struct timeval ts;
+    ts.tv_sec = 60;
+    ts.tv_usec = 0;
+    int a= 0;
+    while(true) {
+        if(finished_summaries) break;
+        finished_summaries = true;
+        FD_ZERO(&read_fd_set);
+        read_fd_set = active_fd_set;
+        write_fd_set = active_fd_set;
+        int k;
+        if ((k = select(FD_SETSIZE, &read_fd_set, NULL, NULL, &ts)) <= 0){
+            if(k == 0) break;
+            if(errno==EINTR){
+                cout << "error case " << endl;
+                continue;
+            }
+            perror ("select");
+            exit (EXIT_FAILURE);
+        }
+         /*Service all the sockets with input pending. */
+        for (int i = 0; i < FD_SETSIZE; i++) {
+            if (FD_ISSET (i, &read_fd_set)) {
+                finished_summaries = false;
+                if (i == sockS) {
+                    if ((worker_fd = accept(sockS, (struct sockaddr *) &client, &clientlen)) < 0) {
+                        perror("accept");
+                        exit(EXIT_FAILURE);
+                    }
+                    hostent *entry = gethostbyaddr(&client, clientlen, AF_INET);
+                    char ip[16];
+                    strcpy(ip, inet_ntoa(client.sin_addr));
+                    cout << "worker ip: " << ip << endl;
+                    char rbuf[1024];
+                    read(worker_fd, rbuf, sizeof(rbuf));
+//                    fd->push(worker_fd);
+                    //                    print_summary(rbuf);
+                    int wPort = atoi(rbuf);
+                    FD_SET(worker_fd, &active_fd_set);
+                    //                    FD_SET(wPort, &active_fd_set);
+                    wl->insert(worker_fd, ip, wPort);
+                }
+                else {
+                    /*cout << a++ << endl;
+                    fd->push(i);*/
+                    char rbuf[1024];
+                    int k = read(i, rbuf, sizeof(rbuf));
+                    a++;
+                    cout << "a = " << a << endl;
+                    if(k < 0) perror("read from worker");
+                    cout << "r: " << rbuf << endl;
+                }
+            }
+        }
+        ts.tv_sec = 1;
+    }
+    cout << "out of while_loop" << endl;
+
+
+    FD_ZERO(&active_fd_set);
+    FD_SET(sockQ, &active_fd_set);
 
     while (true){
         /* Block until input arrives on one or more active sockets. */
@@ -84,36 +149,12 @@ int main(int argc, char *argv[]) {
         for (int i = 0; i < FD_SETSIZE; i++) {
             if (FD_ISSET (i, &read_fd_set)) {
                 if(i == sockQ) {
-                    if((new_sockfd = accept(sockQ, (struct sockaddr *) &client, &clientlen)) < 0) {
+                    if((client_fd = accept(sockQ, (struct sockaddr *) &client, &clientlen)) < 0) {
                         perror("accept");
                         exit(EXIT_FAILURE);
                     }
 
-                    fd->push(new_sockfd);
-                }
-                else if(i == sockS) {
-                    if((new_sockfd = accept(sockS, (struct sockaddr *) &client, &clientlen)) < 0) {
-                        perror("accept");
-                        exit(EXIT_FAILURE);
-                    }
-                    char rbuf[1024];
-                    read(new_sockfd, rbuf, sizeof(rbuf));
-//                    print_summary(rbuf);
-                    int wPort = atoi(rbuf);
-                    FD_SET(new_sockfd, &active_fd_set);
-                    FD_SET(wPort, &active_fd_set);
-                    pthread_mutex_lock(&list_mtx);
-                    cout << "inserted workerPort: " << wPort << endl;
-                    wl->insert(new_sockfd, wPort);
-                    pthread_mutex_unlock(&list_mtx);
-                }
-                else {
-                    char rbuf[1024];
-                    read(i, rbuf, sizeof(rbuf));
-//                    print_summary(rbuf);
-                    /*pthread_mutex_lock(&list_mtx);
-                    wl->insert(i, 0);
-                    pthread_mutex_unlock(&list_mtx);*/
+                    fd->push(client_fd);
                 }
             }
         }

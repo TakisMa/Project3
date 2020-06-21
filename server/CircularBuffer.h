@@ -11,7 +11,7 @@ private:
     int head;
     int tail;
 public:
-
+    int counter;
     bool isFull();
 
     bool isEmpty();

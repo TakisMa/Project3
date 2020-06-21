@@ -7,10 +7,11 @@
 #include "CircularBuffer.h"
 
 extern pthread_mutex_t mtx;
-extern pthread_mutex_t list_mtx;
+extern pthread_mutex_t f_mtx;
 extern pthread_mutex_t print_mtx;
 extern pthread_cond_t cond_nonfull;
 extern pthread_cond_t cond_nonempty;
+extern bool finished_summaries;
 
 void *init_function(void *args);
 

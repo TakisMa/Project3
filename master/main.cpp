@@ -129,7 +129,7 @@ int main(int argc, char *argv[]) {
                     char *c = new char[strlen(readbuf) + 1];
                     strcpy(c, readbuf);
                     c[strlen(readbuf)] = '\0';
-                    print_summary(c);
+//                    print_summary(c);
 
                     delete [] c;
                     delete[] readbuf;

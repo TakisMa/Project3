@@ -251,7 +251,8 @@ int initialize_record(char *filepath, char *countryS, Hashtable *diseaseHT, Hash
         strcpy(s, summary.c_str());
         write_line(fd2, writebuf, bufferSize, s);
         char sbuf[1024];
-        strcpy(sbuf, summary.c_str());
+        sprintf(sbuf,"SUMMARY:%s",summary.c_str());
+        cout<<summary<<endl;
         write(sock_fd, sbuf, sizeof(sbuf));
         delete[] writebuf;
         delete[] s;
