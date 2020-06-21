@@ -1,29 +1,4 @@
 /snap/clion/114/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3"
 -- Configuring done
-CMake Error at CMakeLists.txt:14 (add_executable):
-  Cannot find source file:
-
-    master/Worker.cpp
-
-  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
-  .hpp .hxx .in .txx
-
-
-CMake Error at CMakeLists.txt:10 (add_executable):
-  Cannot find source file:
-
-    master/main.cpp
-
-  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
-  .hpp .hxx .in .txx
-
-
-CMake Error at CMakeLists.txt:14 (add_executable):
-  No SOURCES given to target: Worker
-
-
-CMake Error at CMakeLists.txt:10 (add_executable):
-  No SOURCES given to target: Master
-
-
-CMake Generate step failed.  Build files cannot be regenerated correctly.
+-- Generating done
+-- Build files have been written to: /home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/cmake-build-debug

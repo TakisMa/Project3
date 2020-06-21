@@ -29,6 +29,14 @@ sys/types.h
 -
 
 /home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Functions.h
+sys/socket.h
+-
+netinet/in.h
+-
+arpa/inet.h
+-
+strings.h
+-
 Record.h
 /home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/master/Record.h
 Hashtable.h

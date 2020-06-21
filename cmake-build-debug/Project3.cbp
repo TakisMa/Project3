@@ -381,6 +381,12 @@
 		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/CircularBuffer.h">
 			<Option target="Server"/>
 		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/WorkerList.cpp">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/WorkerList.h">
+			<Option target="Server"/>
+		</Unit>
 		<Unit filename="/home/takis/Documents/DI/6ο εξαμηνο/SysPro/Project3/server/server.cpp">
 			<Option target="Server"/>
 		</Unit>

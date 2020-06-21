@@ -67,8 +67,16 @@ int main(int argc, char *argv[]) {
     char *sPortArg = new char[digits+1];
     sprintf(sPortArg, "%d", serverPort);
 
-    char *argumentsv[] = {program, bufferArg, sPortArg, servIP, NULL};
+    int offset;
+    char *offsetArg;
+
+    char *argumentsv[] = {program, bufferArg, sPortArg, servIP, NULL, NULL};
     for(int i = 0; i < numWorkers; i++) {
+        offset = i+1;
+        digits = findDigits(offset);
+        offsetArg = new char[digits+1];
+        sprintf(offsetArg, "%d", offset);
+        argumentsv[4] = offsetArg;
         childpid[i] = fork();
         if(childpid[i] < 0) {
             cout << "Fork Failed" << endl;
@@ -91,6 +99,7 @@ int main(int argc, char *argv[]) {
         if(childpid[i] == 0) {
             if(execvp("./../cmake-build-debug/Worker", argumentsv) == -1) {
                 cout << "Exec failed " << endl;
+                cout << "a" << endl;
                 return errno;
             }
         }
@@ -105,8 +114,9 @@ int main(int argc, char *argv[]) {
         int pos = 0;
         while ((entry = readdir(dirp)) != NULL) {
             if (entry->d_type == DT_DIR && strcmp(entry->d_name, "..") != 0 && strcmp(entry->d_name, ".") != 0) {
-                    workerM->insertSummary(entry->d_name, fd[pos], fd2[pos], childpid[pos]);
 
+                    workerM->insertSummary(entry->d_name, fd[pos], fd2[pos], childpid[pos]);
+                    cout << childpid[pos] << " " << cfilepath << endl;
                     /* send path to child process */
                     char *tosend = new char[strlen(cfilepath) + strlen(entry->d_name) + 2];
                     sprintf(tosend, "%s/%s", cfilepath, entry->d_name);
@@ -166,7 +176,12 @@ int main(int argc, char *argv[]) {
             }
             unlink(myfifo[child_pos]);
             unlink(auxfifo[child_pos]);
-            
+
+            offset++;
+            digits = findDigits(offset);
+            offsetArg = new char[digits+1];
+            sprintf(offsetArg, "%d", offset);
+            argumentsv[4] = offsetArg;
             childpid[child_pos] = fork();
             if(childpid[child_pos] < 0) {
                 cout << "Fork Failed" << endl;
@@ -189,6 +204,7 @@ int main(int argc, char *argv[]) {
             if(childpid[child_pos] == 0) {
                 if(execvp("./cmake-build-debug/worker", argumentsv) == -1) {
                     cout << "Exec failed " << endl;
+                    cout << "b" << endl;
                     return errno;
                 }
             }
@@ -229,7 +245,7 @@ int main(int argc, char *argv[]) {
             signals = -1;
         }
 
-        cout << "Enter command: " << endl;
+//        cout << "Enter command: " << endl;
         if (!getline(cin, w)) {
             cout<<"w: " << w<<endl;
             cout << "ERROR: " << errno << endl;

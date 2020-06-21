@@ -179,7 +179,7 @@ void write_line(int fd, char *&writebuf, int bufferSize, char *message) {
     }
 }
 
-int initialize_record(char *filepath, char *countryS, Hashtable *diseaseHT, Hashtable *countryHT, ID_Hashtable *idHT, int fd2, int bufferSize) {
+int initialize_record(char *filepath, char *countryS, Hashtable *diseaseHT, Hashtable *countryHT, ID_Hashtable *idHT, int fd2, int sock_fd, int bufferSize) {
     char *filename;
     char *line = NULL;
     char *writebuf;
@@ -250,6 +250,9 @@ int initialize_record(char *filepath, char *countryS, Hashtable *diseaseHT, Hash
         char *s = new char[summary.length() + 1];
         strcpy(s, summary.c_str());
         write_line(fd2, writebuf, bufferSize, s);
+        char sbuf[1024];
+        strcpy(sbuf, summary.c_str());
+        write(sock_fd, sbuf, sizeof(sbuf));
         delete[] writebuf;
         delete[] s;
     }
@@ -376,4 +379,18 @@ void sendEntry(Record *record, int fd2, int bufferSize) {
             record->getExitDate()->day, record->getExitDate()->month, record->getExitDate()->year,
             record->getAge());
     write_line(fd2,writebuf, bufferSize, entry);
+}
+
+int socket_setup(int &sock_desc, int servPort, char *servIP, struct sockaddr_in *serv_addr) {
+    if((sock_desc = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+        printf("Failed creating socket\n");
+    }
+    bzero((char *) &serv_addr, sizeof (serv_addr));
+
+    serv_addr->sin_family = AF_INET;
+    cout<<"b"<<endl;
+    fflush(stdout);
+    serv_addr->sin_addr.s_addr = inet_addr(servIP);
+    //serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+    serv_addr->sin_port = htons(servPort);
 }

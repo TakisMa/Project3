@@ -12,9 +12,10 @@
 #include "CircularBuffer.h"
 #include "thread_functions.h"
 #include "../common/Functions.h"
+#include "WorkerList.h"
 
 pthread_mutex_t mtx = PTHREAD_MUTEX_INITIALIZER;
-pthread_mutex_t mtx1 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t list_mtx = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t print_mtx = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t cond_nonfull = PTHREAD_COND_INITIALIZER;
 pthread_cond_t cond_nonempty = PTHREAD_COND_INITIALIZER;
@@ -24,10 +25,11 @@ pthread_cond_t cond_nonempty = PTHREAD_COND_INITIALIZER;
 int main(int argc, char *argv[]) {
     int numThreads, bufferSize, queryPort, statisticsPort;
     int sockQ, sockS, newsock;
-    fd_set active_fd_set, read_fd_set;
+    fd_set active_fd_set, read_fd_set, write_fd_set;
     struct sockaddr_in serverQ, serverS, client;
     socklen_t clientlen;
     CircularBuffer *fd;
+    WorkerList *wl;
     pthread_t *threads;
     pthread_t t;
     if(checkServerArguments(argc, argv, queryPort, statisticsPort, numThreads, bufferSize) < 0) {
@@ -35,12 +37,13 @@ int main(int argc, char *argv[]) {
     }
     threads = new pthread_t[numThreads];
     fd = new CircularBuffer(bufferSize);
+    wl = new WorkerList();
     struct sockaddr *serverQ_ptr=(struct sockaddr *)&serverQ;
     struct sockaddr *serverS_ptr=(struct sockaddr *)&serverS;
     struct sockaddr *clientptr=(struct sockaddr *)&client;
     struct hostent *rem;
 
-    socket_setup(&serverQ, &serverS, serverQ_ptr, serverS_ptr, sockQ, sockS, queryPort, statisticsPort);
+    socket_setup(&serverQ, &serverS, serverQ_ptr, serverS_ptr, sockQ, sockS, queryPort, statisticsPort);;
 
 	char hostbuffer[256];
     char *IPbuffer;
@@ -55,18 +58,22 @@ int main(int argc, char *argv[]) {
     args->buffer = fd;
     args->addr = serverQ_ptr;
     args->len = sizeof(*serverQ_ptr);
+    args->wl = wl;
     for(int i = 0; i < numThreads; i++) pthread_create(threads+i, NULL, init_function, (void*)args);
 
 
     FD_ZERO(&active_fd_set);
     FD_SET(sockQ, &active_fd_set);
+    FD_SET(sockS, &active_fd_set);
     int new_sockfd;
     clientlen = sizeof(client);
+
 
     while (true){
         /* Block until input arrives on one or more active sockets. */
         read_fd_set = active_fd_set;
-        if (select (FD_SETSIZE, &read_fd_set, NULL, NULL, NULL) < 0){
+        write_fd_set = active_fd_set;
+        if (select (FD_SETSIZE, &read_fd_set, &write_fd_set, NULL, NULL) < 0){
             if(errno==EINTR){
                 continue;
             }
@@ -76,12 +83,38 @@ int main(int argc, char *argv[]) {
         /* Service all the sockets with input pending. */
         for (int i = 0; i < FD_SETSIZE; i++) {
             if (FD_ISSET (i, &read_fd_set)) {
-                if((new_sockfd = accept(sockQ, (struct sockaddr *) &client, &clientlen)) < 0) {
-                    perror("accept");
-                    exit(EXIT_FAILURE);
-                }
+                if(i == sockQ) {
+                    if((new_sockfd = accept(sockQ, (struct sockaddr *) &client, &clientlen)) < 0) {
+                        perror("accept");
+                        exit(EXIT_FAILURE);
+                    }
 
-                fd->push(new_sockfd);
+                    fd->push(new_sockfd);
+                }
+                else if(i == sockS) {
+                    if((new_sockfd = accept(sockS, (struct sockaddr *) &client, &clientlen)) < 0) {
+                        perror("accept");
+                        exit(EXIT_FAILURE);
+                    }
+                    char rbuf[1024];
+                    read(new_sockfd, rbuf, sizeof(rbuf));
+//                    print_summary(rbuf);
+                    int wPort = atoi(rbuf);
+                    FD_SET(new_sockfd, &active_fd_set);
+                    FD_SET(wPort, &active_fd_set);
+                    pthread_mutex_lock(&list_mtx);
+                    cout << "inserted workerPort: " << wPort << endl;
+                    wl->insert(new_sockfd, wPort);
+                    pthread_mutex_unlock(&list_mtx);
+                }
+                else {
+                    char rbuf[1024];
+                    read(i, rbuf, sizeof(rbuf));
+//                    print_summary(rbuf);
+                    /*pthread_mutex_lock(&list_mtx);
+                    wl->insert(i, 0);
+                    pthread_mutex_unlock(&list_mtx);*/
+                }
             }
         }
     }

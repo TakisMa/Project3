@@ -7,17 +7,23 @@ CMakeFiles/Server.dir/common/Functions.cpp.o: ../common/Functions.h
 CMakeFiles/Server.dir/server/CircularBuffer.cpp.o: ../server/CircularBuffer.cpp
 CMakeFiles/Server.dir/server/CircularBuffer.cpp.o: ../server/CircularBuffer.h
 
+CMakeFiles/Server.dir/server/WorkerList.cpp.o: ../server/WorkerList.cpp
+CMakeFiles/Server.dir/server/WorkerList.cpp.o: ../server/WorkerList.h
+
 CMakeFiles/Server.dir/server/server.cpp.o: ../common/Functions.h
 CMakeFiles/Server.dir/server/server.cpp.o: ../server/CircularBuffer.h
+CMakeFiles/Server.dir/server/server.cpp.o: ../server/WorkerList.h
 CMakeFiles/Server.dir/server/server.cpp.o: ../server/server.cpp
 CMakeFiles/Server.dir/server/server.cpp.o: ../server/server_utility.h
 CMakeFiles/Server.dir/server/server.cpp.o: ../server/thread_functions.h
 
 CMakeFiles/Server.dir/server/server_utility.cpp.o: ../server/CircularBuffer.h
+CMakeFiles/Server.dir/server/server_utility.cpp.o: ../server/WorkerList.h
 CMakeFiles/Server.dir/server/server_utility.cpp.o: ../server/server_utility.cpp
 CMakeFiles/Server.dir/server/server_utility.cpp.o: ../server/server_utility.h
 
 CMakeFiles/Server.dir/server/thread_functions.cpp.o: ../server/CircularBuffer.h
+CMakeFiles/Server.dir/server/thread_functions.cpp.o: ../server/WorkerList.h
 CMakeFiles/Server.dir/server/thread_functions.cpp.o: ../server/server_utility.h
 CMakeFiles/Server.dir/server/thread_functions.cpp.o: ../server/thread_functions.cpp
 CMakeFiles/Server.dir/server/thread_functions.cpp.o: ../server/thread_functions.h

@@ -2,7 +2,11 @@
 #include <cstdlib>
 #include <iostream>
 #include <stdio.h>
+#include <cstring>
+
 #define BACKLOG 10
+
+using namespace std;
 
 void perror_exit(char *message) {
     perror(message);
@@ -35,4 +39,24 @@ int socket_setup(struct sockaddr_in *serverQ, struct sockaddr_in *serverS, struc
     if (listen(sockS, BACKLOG) < 0) perror_exit("Statistics listen");
 
     return 0;
+}
+
+void print_summary(char *sum) {
+    char *summary;
+    summary = strtok(sum, "?");
+    while(summary) {
+        if(summary[0] == '\\'){
+            summary++;
+            cout << "Age range 0-20 years: " << summary << " cases" << endl;
+            summary = strtok(NULL, "?");
+            cout << "Age range 21-40 years: " << summary << " cases" << endl;
+            summary = strtok(NULL, "?");
+            cout << "Age range 41-60 years: " << summary << " cases" << endl;
+            summary = strtok(NULL, "?");
+            cout << "Age range 60+ years: " << summary << " cases" << endl;
+            cout << endl;
+        }
+        else cout << summary << endl;
+        summary = strtok(NULL, "?");
+    }
 }

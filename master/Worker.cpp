@@ -42,8 +42,13 @@ int main(int argc, char* argv[]) {
     int serverPort = atoi(argv[2]);
     char *serverIP = new char[strlen(argv[3])];
     strcpy(serverIP, argv[3]);
+    int offset = atoi(argv[4]);
     int sock_desc;
-    struct sockaddr_in *serv_addr;
+    struct sockaddr_in serv_addr;
+    struct sockaddr_in my_sock;
+    struct sockaddr_in client;
+    struct sockaddr *mysock_ptr=(struct sockaddr *)&my_sock;
+    socklen_t clientlen;
 
     int fd , fd2, sent;
     string filePath, word, i, j, k;
@@ -52,11 +57,30 @@ int main(int argc, char* argv[]) {
     char *readbuf, *writebuf;
     char *myfifo, *auxfifo;
     int success = 0, fail = 0;
+    char sbuf[1024], rbuf[1024];
 
-    /*socket_setup(fd2, serverPort, serverIP, serv_addr);
-    if (connect(fd2, (struct sockaddr *) serv_addr, sizeof(*serv_addr)) < 0) {
+
+    /* Setup connection to server */
+    if((sock_desc = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+        printf("Failed creating socket\n");
+    }
+    bzero((char *) &serv_addr, sizeof (serv_addr));
+
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_addr.s_addr = inet_addr(serverIP);
+    //serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+    serv_addr.sin_port = htons(serverPort);
+
+    if (connect(sock_desc, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) {
         perror("Failed to connect to server\n");
-    }*/
+    }
+    sprintf(sbuf, "%d", serverPort+offset);
+    write(sock_desc, sbuf, sizeof(sbuf));
+    cout << "workerPort: " << sbuf <<endl;
+
+    /* End of setup connection */
+
+
 
 
     ID_Hashtable *idHT = new ID_Hashtable(SIZE);
@@ -98,7 +122,7 @@ int main(int argc, char* argv[]) {
             c = strtok(NULL, "/");
             char *country=new char[strlen(c)+1];
             strcpy(country,c);
-            initialize_record(filepath, country, diseaseHT, countryHT, idHT, fd2, bufferSize);
+            initialize_record(filepath, country, diseaseHT, countryHT, idHT, fd2, sock_desc, bufferSize);
             delete [] country;
         }
         delete [] readbuf;
@@ -106,13 +130,33 @@ int main(int argc, char* argv[]) {
     write_line(fd2, writebuf, bufferSize, "OK");
     delete [] writebuf;
     close(fd2);
+    close(fd);
+    unlink(myfifo);
+    unlink(auxfifo);
 
-    socket_setup(fd2, serverPort, serverIP, serv_addr);
-    if (connect(fd2, (struct sockaddr *) serv_addr, sizeof(*serv_addr)) < 0) {
-        perror("Failed to connect to server\n");
-    }
 
-    while(true){
+    /* Setting up sockets for server communication */
+//    socket_setup(fd2, serverPort, serverIP, &serv_addr);
+
+
+
+    clientlen = sizeof(client);
+    if ((fd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+        perror("Query socket");
+    my_sock.sin_family = AF_INET;  /*Internet domain */
+    my_sock.sin_addr.s_addr = htonl(INADDR_ANY);
+    my_sock.sin_port = htons(serverPort+offset);  /*The given port*/
+    if(bind(fd, mysock_ptr, sizeof(my_sock)) < 0) perror("worker bind");
+    if(listen(fd, 10) < 0) perror("worker listen");
+    if(accept(fd, (struct sockaddr *) &client, &clientlen) < 0) perror("worker accept");
+    read(fd, rbuf, sizeof(rbuf));
+    cout << "worker read from server: " << rbuf << endl;
+    strcpy(sbuf, "hi from worker");
+    write(sock_desc, sbuf, sizeof(sbuf));
+    while(1);
+
+    while(signals != SIGINT){
+        /*Error & signal handling */
         if(signals == SIGUSR1) {
             string countries = countryHT->getCountry().c_str();
             char *c = new char[countries.length() + 1];
@@ -120,29 +164,31 @@ int main(int argc, char* argv[]) {
             c[countries.length()] = '\0';
             char *countriesC = strtok(c, "?");
             while(countriesC != NULL) {
-                initialize_record(filepath, countriesC, diseaseHT, countryHT, idHT, fd2, bufferSize);
+                initialize_record(filepath, countriesC, diseaseHT, countryHT, idHT, fd2, sock_desc, bufferSize);
                 countriesC = strtok(NULL, "?");
             }
             delete [] c;
             signals = -1;
         }
-        else if(signals == SIGINT) {
-            delete diseaseHT;
-            delete countryHT;
-            delete idHT;
-            kill(getpid(), SIGKILL);
-        }
         int size = 0;
-        read(fd, &size, sizeof(int));
-        if (read_line(fd, readbuf, size, bufferSize) != 0) {
+
+         /*Waiting for server to issue command */
+
+         read(fd, &size, sizeof(int));
+         if (read_line(fd, readbuf, size, bufferSize) != 0) {
             cout << "error in read" << endl;
             fail++;
             return errno;
-        }
-        string g(readbuf);
-        delete [] readbuf;
-        int tmp = select_command(diseaseHT, countryHT, idHT, filepath, g, fd2, bufferSize);
-        if(tmp > 0) success++;
-        else fail++;
+         }
+         string g(readbuf);
+         delete [] readbuf;
+         int tmp = select_command(diseaseHT, countryHT, idHT, filepath, g, fd2, bufferSize);
+         if(tmp > 0) success++;
+         else fail++;
     }
+    delete diseaseHT;
+    delete countryHT;
+    delete idHT;
+    kill(getpid(), SIGKILL);
+    return 0;
 }

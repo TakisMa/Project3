@@ -3,7 +3,7 @@ project(Project3)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
 
-add_executable(Server server/server.cpp server/server_utility.cpp common/Functions.cpp server/CircularBuffer.cpp server/CircularBuffer.h server/thread_functions.cpp server/thread_functions.h)
+add_executable(Server server/server.cpp server/server_utility.cpp common/Functions.cpp server/CircularBuffer.cpp server/CircularBuffer.h server/thread_functions.cpp server/thread_functions.h server/WorkerList.cpp server/WorkerList.h)
 add_executable(Client client/client.cpp client/client_utility.cpp common/Functions.cpp client/threads.cpp client/threads.h)
 
 

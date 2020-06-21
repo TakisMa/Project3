@@ -828,6 +828,33 @@ server/CircularBuffer.cpp.s:
 	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/server/CircularBuffer.cpp.s
 .PHONY : server/CircularBuffer.cpp.s
 
+server/WorkerList.o: server/WorkerList.cpp.o
+
+.PHONY : server/WorkerList.o
+
+# target to build an object file
+server/WorkerList.cpp.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/server/WorkerList.cpp.o
+.PHONY : server/WorkerList.cpp.o
+
+server/WorkerList.i: server/WorkerList.cpp.i
+
+.PHONY : server/WorkerList.i
+
+# target to preprocess a source file
+server/WorkerList.cpp.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/server/WorkerList.cpp.i
+.PHONY : server/WorkerList.cpp.i
+
+server/WorkerList.s: server/WorkerList.cpp.s
+
+.PHONY : server/WorkerList.s
+
+# target to generate assembly for a file
+server/WorkerList.cpp.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/server/WorkerList.cpp.s
+.PHONY : server/WorkerList.cpp.s
+
 server/server.o: server/server.cpp.o
 
 .PHONY : server/server.o
@@ -990,6 +1017,9 @@ help:
 	@echo "... server/CircularBuffer.o"
 	@echo "... server/CircularBuffer.i"
 	@echo "... server/CircularBuffer.s"
+	@echo "... server/WorkerList.o"
+	@echo "... server/WorkerList.i"
+	@echo "... server/WorkerList.s"
 	@echo "... server/server.o"
 	@echo "... server/server.i"
 	@echo "... server/server.s"
