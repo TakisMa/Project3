@@ -147,9 +147,9 @@ int main(int argc, char* argv[]) {
     my_sock.sin_port = htons(serverPort+offset);  /*The given port*/
     if(bind(new_fd, mysock_ptr, sizeof(my_sock)) < 0) perror("worker bind");
     if(listen(new_fd, 10) < 0) perror("worker listen");
-    if((fd = accept(new_fd, (struct sockaddr *) &client, &clientlen)) < 0) perror("worker accept");
     int noAnswer = 0;
     do {
+        if((fd = accept(new_fd, (struct sockaddr *) &client, &clientlen)) < 0) perror("worker accept");
         int c=0;
         while (c < 1024) {
             cout << "A" << endl;
