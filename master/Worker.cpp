@@ -152,7 +152,6 @@ int main(int argc, char* argv[]) {
         if((fd = accept(new_fd, (struct sockaddr *) &client, &clientlen)) < 0) perror("worker accept");
         int c=0;
         while (c < 1024) {
-            cout << "A" << endl;
             c += read(fd, rbuf + c, sizeof(rbuf));
             if (c < 0) {
                 perror("worker read");
@@ -162,9 +161,7 @@ int main(int argc, char* argv[]) {
         }
         cout << "worker read from server: " << rbuf << endl;
         sprintf(sbuf, "hi from worker #%d", noAnswer);
-        cout << "B" << endl;
         write(sock_desc, sbuf, sizeof(sbuf));
-        cout << "C" << endl;
         noAnswer ++;
     }while(1);
 

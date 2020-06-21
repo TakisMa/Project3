@@ -28,12 +28,14 @@ void *init_function(void *args) {
             fflush(stdout);
 //            pthread_mutex_lock(&list_mtx);
             wl->sendtoAll(rbuf);
-            wl->recvAll();
+            wl->recvAll(fd);
+            strcpy(sbuf, "END");
+            write(fd, sbuf, sizeof(sbuf));
 //            pthread_mutex_unlock(&list_mtx);
             pthread_mutex_unlock(&print_mtx);
         }
-        strcpy(sbuf, "Server answer");
-        write(fd,sbuf, sizeof(sbuf));
+        /*strcpy(sbuf, "Server answer");
+        write(fd,sbuf, sizeof(sbuf));*/
         close(fd);
     }
     return NULL;

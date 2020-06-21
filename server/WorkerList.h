@@ -13,7 +13,7 @@ private:
     WorkerListNode *next;
 public:
     void sendMessage(char *message);
-    void recvMessage();
+    void recvMessage(int fd);
 
 
     WorkerListNode(int rfd, char *workerIP, int workerPort, WorkerListNode *next);
@@ -26,7 +26,7 @@ private:
 public:
     void insert(int rfd, char *workerIP, int workerPort);
     void sendtoAll(char *message);
-    void recvAll();
+    void recvAll(int fd);
 
     WorkerList();
     ~WorkerList();

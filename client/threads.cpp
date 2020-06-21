@@ -74,11 +74,15 @@ void *t_function(void *args) {
 //        pthread_mutex_unlock(&print_mutex);
     }
     char rbuff[1024];
-    int i = read(sock_desc, rbuff, sizeof(rbuff));
+    while(true) {
+        int i = read(sock_desc, rbuff, sizeof(rbuff));
+        if(strcmp(rbuff, "END") == 0) break;
 //    pthread_mutex_lock(&print_mutex);
-    if(i > 0) cout << "ANSWER: " << rbuff << endl;
-    cout << endl;
+        if (i > 0) cout << "ANSWER: " << rbuff << endl;
+        cout << endl;
+    }
     pthread_mutex_unlock(&print_mutex);
+
 
     close(sock_desc);
     return NULL;
