@@ -13,7 +13,7 @@
 #include "Hashtable.h"
 #include "Heap.h"
 #include "RecordIDManagement.h"
-#include "Functions.h"
+#include "functions.h"
 #include "Record.h"
 #include "Commands.h"
 #include "SignalHandling.h"
@@ -148,7 +148,7 @@ int main(int argc, char* argv[]) {
     if(bind(new_fd, mysock_ptr, sizeof(my_sock)) < 0) perror("worker bind");
     if(listen(new_fd, 10) < 0) perror("worker listen");
     int noAnswer = 0;
-    do {
+    while(signals != SIGINT) {
         if((fd = accept(new_fd, (struct sockaddr *) &client, &clientlen)) < 0) perror("worker accept");
         int c=0;
         while (c < 1024) {
@@ -160,13 +160,26 @@ int main(int argc, char* argv[]) {
             else if(c == 0) break;
         }
         cout << "worker read from server: " << rbuf << endl;
-        sprintf(sbuf, "hi from worker #%d", noAnswer);
-        write(sock_desc, sbuf, sizeof(sbuf));
+        string g(rbuf);
+        int tmp = select_command(diseaseHT, countryHT, idHT, filepath, g, sock_desc, bufferSize);
+        if(tmp < 0) {
+            strcpy(sbuf, "error");
+            write(sock_desc, sbuf, sizeof(sbuf));
+        }
+        else {
+            strcpy(sbuf, "END");
+            write(sock_desc, sbuf, sizeof(sbuf));
+        }
+        /*noAnswer = atoi(rbuf) - 1;
+        sprintf(sbuf, "#%d", noAnswer);
+        write(sock_desc, sbuf, sizeof(sbuf));*/
         noAnswer ++;
-    }while(1);
+        close(fd);
+    }
 
-    while(signals != SIGINT){
-        /*Error & signal handling */
+    /*while(signals != SIGINT){
+        *//*Error & signal handling */
+    /*
         if(signals == SIGUSR1) {
             string countries = countryHT->getCountry().c_str();
             char *c = new char[countries.length() + 1];
@@ -182,7 +195,7 @@ int main(int argc, char* argv[]) {
         }
         int size = 0;
 
-         /*Waiting for server to issue command */
+         *//*Waiting for server to issue command *//*
 
          read(fd, &size, sizeof(int));
          if (read_line(fd, readbuf, size, bufferSize) != 0) {
@@ -195,7 +208,7 @@ int main(int argc, char* argv[]) {
          int tmp = select_command(diseaseHT, countryHT, idHT, filepath, g, fd2, bufferSize);
          if(tmp > 0) success++;
          else fail++;
-    }
+    }*/
     delete diseaseHT;
     delete countryHT;
     delete idHT;

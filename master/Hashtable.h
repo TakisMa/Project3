@@ -24,6 +24,10 @@ private:
     }
 
 public:
+    bool countryExists(string country) {
+        return  table[hashS(country)]? table[hashS(country)]->countryExists(country) : false;
+    }
+
     void topk(string country, Heap *heap, Date *entry, Date *exit);
 
     void topk(string country, Heap *heap);
@@ -75,6 +79,8 @@ public:
     }
 
     void insertHashTable(Record *rec);
+
+
 
     void hashPrint();
 

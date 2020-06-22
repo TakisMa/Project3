@@ -22,6 +22,7 @@ void *t_function(void *args) {
     struct sockaddr_in serv_addr;
     pthread_mutex_lock(&count_mutex);
     t_count++;
+    int c = t_count;
     pthread_mutex_unlock(&count_mutex);
 
     if((sock_desc = socket(AF_INET, SOCK_STREAM, 0)) < 0)
@@ -67,18 +68,23 @@ void *t_function(void *args) {
             perror("Failed to connect to server\n");
         }
         write(sock_desc, sbuff, sizeof(sbuff));
-
-
         pthread_mutex_lock(&print_mutex);
-        cout << "fd: " << sock_desc << " threads line sent: " << sbuff;
+
+
+        cout << "Q: " << sbuff;
 //        pthread_mutex_unlock(&print_mutex);
     }
     char rbuff[1024];
     while(true) {
         int i = read(sock_desc, rbuff, sizeof(rbuff));
         if(strcmp(rbuff, "END") == 0) break;
+        else if(strcmp(rbuff, "error") == 0) break;
 //    pthread_mutex_lock(&print_mutex);
-        if (i > 0) cout << "ANSWER: " << rbuff << endl;
+        if (i > 0) cout << "A" << c << ": " << rbuff << endl;
+        else if(i < 0) {
+//            perror("client thread read() ");
+            break;
+        }
         cout << endl;
     }
     pthread_mutex_unlock(&print_mutex);

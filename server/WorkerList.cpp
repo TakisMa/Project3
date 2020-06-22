@@ -33,21 +33,27 @@ void WorkerListNode::sendMessage(char *message) {
     }
     write(wfd, sbuf, sizeof(sbuf));
     cout << "wrote to worker: " << sbuf << endl;
+//    close(wfd);
     if(next) next->sendMessage(message);
 }
 
 void WorkerListNode::recvMessage(int fd) {
     char rbuf[1024];
-    int i = read(rfd, rbuf, sizeof(rbuf));
-    if(i >= 0) {
-        write(fd, rbuf, sizeof(rbuf));
-        /*cout << "A: " << rbuf << endl;*/
+    while(true) {
+        int i = read(rfd, rbuf, sizeof(rbuf));
+        if(strcmp(rbuf, "END") == 0) break;
+        cout << "server answer: " << rbuf << endl;
+        if (i >= 0) {
+            write(fd, rbuf, sizeof(rbuf));
+            /*cout << "A: " << rbuf << endl;*/
+        } else if (i < 0) {
+            perror("recvMessage()");
+            strcpy(rbuf, "ERROR");
+            write(fd, rbuf, sizeof(rbuf));
+            return;
+        }
     }
-    else if(i < 0) {
-        perror("recvMessage()");
-        return;
-    }
-    else if(next) next->recvMessage(fd);
+    if(next) next->recvMessage(fd);
 }
 
 WorkerListNode::WorkerListNode(int rfd, char *workerIP, int workerPort, WorkerListNode *next) {
@@ -72,7 +78,6 @@ void WorkerList::sendtoAll(char *message) {
 
 void WorkerList::recvAll(int fd) {
    if(head) head->recvMessage(fd);
-   cout << "finished" << endl;
 }
 
 WorkerList::WorkerList() {

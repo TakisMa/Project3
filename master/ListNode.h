@@ -18,6 +18,10 @@ private:
     Tree* tree;
 
 public:
+    bool countryExists(string country) {
+        return next ? country==record->getCountry() || next->countryExists(country) : country==record->getCountry();
+    }
+
     void topk(string country, Heap *heap, Date *entry, Date *exit, type_t type);
 
     void topk(string country, Heap *heap, type_t type);

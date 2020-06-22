@@ -18,14 +18,8 @@ void *init_function(void *args) {
         }
         int i=read(fd, rbuf, sizeof(rbuf));
         if(i > 0) {
-            /*if(strncmp(rbuf, "SUMMARY:",8) == 0) {
-//                print_summary(rbuf+8);
-                continue;
-            }*/
             if(strcmp(rbuf, "exit") == 0) break;
             pthread_mutex_lock(&print_mtx);
-            cout << "Q: " << rbuf << endl;
-            fflush(stdout);
 //            pthread_mutex_lock(&list_mtx);
             wl->sendtoAll(rbuf);
             wl->recvAll(fd);
@@ -36,7 +30,7 @@ void *init_function(void *args) {
         }
         /*strcpy(sbuf, "Server answer");
         write(fd,sbuf, sizeof(sbuf));*/
-        close(fd);
+//        close(fd);
     }
     return NULL;
 }

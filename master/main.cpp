@@ -7,7 +7,7 @@
 #include <cstring>
 #include <string>
 #include <sstream>
-#include "Functions.h"
+#include "functions.h"
 #include "SummaryManagement.h"
 #include "SignalHandling.h"
 #include "FileManagement.h"

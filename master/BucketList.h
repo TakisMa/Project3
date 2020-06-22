@@ -11,6 +11,10 @@ private:
     int bucketSize;
     int sum;
 public:
+    bool countryExists(string country) {
+        return  first? first->countryExists(country) : false;
+    }
+
     void topk(string country, Heap* heap, Date *entry, Date *exit, type_t type);
 
     void topk(string country, Heap* heap, type_t type);

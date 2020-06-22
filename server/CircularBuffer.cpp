@@ -33,8 +33,6 @@ int CircularBuffer::push(int desc) {
     pthread_mutex_lock(&mtx);
     if(count == capacity) pthread_cond_wait(&cond_nonfull, &mtx);
     count ++;
-    counter ++;
-    cout << counter << endl;
     buffer[tail] = desc;
     tail = (tail + 1) % capacity;
     pthread_mutex_unlock(&mtx);

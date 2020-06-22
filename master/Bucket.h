@@ -16,6 +16,10 @@ private:
     Bucket* next;
 
 public:
+    bool countryExists(string country) {
+        return next ? (head? head->countryExists(country) :false) || next->countryExists(country) : (head? head->countryExists(country) :false);
+    }
+
     void topk(string country, Heap *heap, Date *entry, Date *exit, type_t type);
 
     void topk(string country, Heap *heap, type_t type);

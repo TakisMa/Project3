@@ -115,12 +115,8 @@ int main(int argc, char *argv[]) {
                     wl->insert(worker_fd, ip, wPort);
                 }
                 else {
-                    /*cout << a++ << endl;
-                    fd->push(i);*/
                     char rbuf[1024];
                     int k = read(i, rbuf, sizeof(rbuf));
-                    a++;
-                    cout << "a = " << a << endl;
                     if(k < 0) perror("read from worker");
                     cout << "r: " << rbuf << endl;
                 }
@@ -128,7 +124,7 @@ int main(int argc, char *argv[]) {
         }
         ts.tv_sec = 1;
     }
-    cout << "out of while_loop" << endl;
+    cout << "Server ready to receive client requests..." << endl;
 
 
     FD_ZERO(&active_fd_set);
